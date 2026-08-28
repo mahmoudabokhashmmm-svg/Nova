@@ -6,11 +6,9 @@
     <title>NOVA | Luxury Leather Bags Studio</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@200;300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <script>
@@ -169,11 +167,10 @@
             <button onclick="filterBrand('mk')" class="filter-btn px-3.5 py-1.5 rounded-xl text-nude-800 hover:bg-white transition-all" data-brand="mk">MK</button>
         </div>
 
-        <!-- قائمة الشنط المعروضة -->
         <div class="space-y-8" id="products-list"></div>
     </section>
 
-    <!-- سلة الشراء Drawer -->
+    <!-- سلة الشراء -->
     <div id="cart-drawer" class="fixed inset-0 z-50 overflow-hidden hidden">
         <div class="absolute inset-0 bg-nude-900/30 backdrop-blur-xs" onclick="toggleCart()"></div>
         <div class="fixed inset-y-0 left-0 max-w-full flex" id="cart-direction">
@@ -221,7 +218,7 @@
                         </div>
                         <div>
                             <label class="block text-nude-800 mb-1 font-medium">رقم الموبايل (واتساب) *</label>
-                            <input type="tel" id="order-phone" required placeholder="01012345678" class="w-full bg-nude-50 border border-nude-200 rounded-xl px-3 py-2.5 focus:outline-none focus:border-nude-800">
+                            <input type="tel" id="order-phone" required placeholder="01010143989" class="w-full bg-nude-50 border border-nude-200 rounded-xl px-3 py-2.5 focus:outline-none focus:border-nude-800">
                         </div>
                     </div>
 
@@ -245,12 +242,12 @@
                             <span class="font-bold text-amber-900">⚡ تحويل عربون الشحن (100 ج) عبر إنستاباي:</span>
                             <span class="text-[10px] bg-purple-100 text-purple-800 px-2 py-0.5 rounded font-bold">InstaPay</span>
                         </div>
-                        <a href="https://ipn.eg/S/mahmoudabokhashm2006/instapay/46V1Wk" target="_blank" class="w-full py-2 bg-purple-900 text-white rounded-xl font-bold flex items-center justify-center gap-1.5 text-xs">
+                        <a href="https://ipn.eg/S/mahmoudabokhashm2006/instapay/46V1Wk" target="_blank" class="w-full py-2 bg-purple-900 hover:bg-purple-800 text-white rounded-xl font-bold flex items-center justify-center gap-1.5 text-xs transition">
                             <span>اضغطي هنا للتحويل المباشر في إنستاباي 📲</span>
                         </a>
                         <div class="text-[11px] font-mono bg-white p-2 rounded-lg border border-amber-200 flex justify-between items-center">
-                            <span>mahmoudabokhashm2006@instapay</span>
-                            <button type="button" onclick="navigator.clipboard.writeText('mahmoudabokhashm2006@instapay'); alert('تم نسخ الحساب!');" class="text-[10px] bg-amber-100 px-2 py-0.5 rounded">نسخ</button>
+                            <span>رقم التحويل: <strong>01010143989</strong></span>
+                            <button type="button" onclick="navigator.clipboard.writeText('01010143989'); alert('تم نسخ رقم إنستاباي!');" class="text-[10px] bg-amber-100 px-2 py-0.5 rounded font-bold">نسخ الرقم</button>
                         </div>
                         <input type="text" id="instapay-sender" required placeholder="اسم أو رقم الحساب المحوّل منه على إنستاباي *" class="w-full bg-white border border-amber-300 rounded-xl px-3 py-2 text-xs focus:outline-none">
                     </div>
@@ -303,9 +300,9 @@
             <!-- أزرار سريعة للأسئلة -->
             <div class="px-2.5 py-1.5 bg-white border-t border-nude-200 flex gap-1 overflow-x-auto scrollbar-none">
                 <button type="button" onclick="sendQuickBagPrompt('طريقة عمل أوردر؟')" class="px-2 py-0.5 bg-nude-100 hover:bg-nude-200 rounded-full text-[10px] text-nude-800 whitespace-nowrap">طريقة الطلب؟</button>
+                <button type="button" onclick="sendQuickBagPrompt('عربون إنستاباي 100 ج')" class="px-2 py-0.5 bg-nude-100 hover:bg-nude-200 rounded-full text-[10px] text-nude-800 whitespace-nowrap">عربون 100 ج؟</button>
                 <button type="button" onclick="sendQuickBagPrompt('المعاينة وفحص الجلد قبل الدفع')" class="px-2 py-0.5 bg-nude-100 hover:bg-nude-200 rounded-full text-[10px] text-nude-800 whitespace-nowrap">المعاينة والخامات؟</button>
-                <button type="button" onclick="sendQuickBagPrompt('تفاصيل الشحن والتوصيل')" class="px-2 py-0.5 bg-nude-100 hover:bg-nude-200 rounded-full text-[10px] text-nude-800 whitespace-nowrap">الشحن ومواعيده؟</button>
-                <button type="button" onclick="sendQuickBagPrompt('عربون الشحن إنستاباي')" class="px-2 py-0.5 bg-nude-100 hover:bg-nude-200 rounded-full text-[10px] text-nude-800 whitespace-nowrap">عربون 100 ج؟</button>
+                <button type="button" onclick="sendQuickBagPrompt('مواعيد وتفاصيل الشحن')" class="px-2 py-0.5 bg-nude-100 hover:bg-nude-200 rounded-full text-[10px] text-nude-800 whitespace-nowrap">الشحن ومواعيده؟</button>
             </div>
 
             <form onsubmit="handleChatSubmit(event)" class="p-2.5 border-t border-nude-200 bg-white flex gap-1.5">
@@ -315,9 +312,9 @@
         </div>
     </div>
 
-    <!-- مصفوفة الشنط والشات بوت المطور -->
     <script>
         const OWNER_PHONE = "201005823798";
+        const INSTAPAY_NUMBER = "01010143989";
         const INSTAPAY_HANDLE = "mahmoudabokhashm2006@instapay";
 
         let currentLang = 'ar';
@@ -596,7 +593,7 @@
             setTimeout(() => { window.open(waUrl, '_blank'); }, 600);
         }
 
-        // منطق الشات بوت الذكي لموقع NOVA
+        // شات بوت ذكي فائق الدقة لـ NOVA
         function sendQuickBagPrompt(text) {
             document.getElementById('chat-input').value = text;
             handleChatSubmit(new Event('submit'));
@@ -614,26 +611,43 @@
             chatMessages.scrollTop = chatMessages.scrollHeight;
 
             setTimeout(() => {
-                const lower = val.toLowerCase();
+                const t = val.toLowerCase();
                 let reply = '';
 
-                if (lower.includes('سلام') || lower.includes('مرحبا') || lower.includes('اهلا') || lower.includes('هاي') || lower.includes('صباح') || lower.includes('مساء')) {
-                    reply = 'أهلاً بكِ في **NOVA Studio** للحقائب الفاخرة! 👜✨\nيسعدني جداً مساعدتكِ اليوم. يمكنكِ سؤالي عن:\n• طريقة الطلب وإتمام الشراء 🛍️\n• خامات الجلود الأصلية والمعاينة قبل الدفع 🔍\n• مواعيد الشحن وعربون إنستاباي 🚚\n• تشكيلات الماركات المتاحة (LV, Chanel, Gucci, Prada, Coach, MK).';
-                } else if (lower.includes('طلب') || lower.includes('اشتري') || lower.includes('اوردر') || lower.includes('سلة') || lower.includes('ازاي')) {
-                    reply = '🛍️ **طريقة الطلب بسيطة وسريعة:**\n1. اضغطي على زر "إضافة للسلة" تحت الشنطة المفضلة لكِ.\n2. افتحي السلة واضغطي "متابعة إجراءات الدفع".\n3. اكتبي اسمك وعنوانك وحولي عربون الشحن (100 ج) عبر إنستاباي.\n4. سيتم إرسال الفاتورة بالصور لواتساب المالك لتأكيد الشحن فوراً!';
-                } else if (lower.includes('معاينة') || lower.includes('جلد') || lower.includes('خام') || lower.includes('فحص') || lower.includes('استلام') || lower.includes('اصل')) {
+                // 1. الديبوزت وإنستاباي
+                if (t.includes('عربون') || t.includes('ديبوزت') || t.includes('انستاباي') || t.includes('إنستاباي') || t.includes('instapay') || t.includes('100') || t.includes('تحويل')) {
+                    reply = '⚡ **تفاصيل عربون الشحن (100 ج.م):**\n• لحجز المندوب وتأكيد الجدية، يتم تحويل 100 ج.م عبر إنستاباي.\n• 📱 **رقم التحويل:** `01010143989`\n• 🔗 **عنوان إنستاباي:** `mahmoudabokhashm2006@instapay`\n• 📲 **رابط التحويل المباشر:**\nhttps://ipn.eg/S/mahmoudabokhashm2006/instapay/46V1Wk\n\n📌 *تُخصم الـ 100 ج بالكامل من إجمالي الفاتورة عند استلام الحقيبة.*';
+                }
+                // 2. التحيات
+                else if (t.includes('سلام') || t.includes('مرحبا') || t.includes('اهلا') || t.includes('أهلا') || t.includes('هاي') || t.includes('صباح') || t.includes('مساء') || t.includes('ازيك')) {
+                    reply = 'أهلاً بكِ في **NOVA Studio** للحقائب الجلدية الفاخرة! 👜✨\nيسعدني جداً مساعدتكِ اليوم. يمكنكِ سؤالي عن:\n• 🛍️ طريقة عمل أوردر والشراء\n• 🔍 خامات الجلود الأصلية والفحص قبل الدفع\n• 🚚 مواعيد الشحن وعربون إنستاباي (100 ج)\n• ⚜️ تشكيلات الماركات (LV, Chanel, Gucci, Prada, Coach, MK).';
+                }
+                // 3. طريقة الطلب
+                else if (t.includes('اطلب') || t.includes('اشتري') || t.includes('شراء') || t.includes('اوردر') || t.includes('أوردر') || t.includes('سلة') || t.includes('طريقة الطلب') || t.includes('ازاي')) {
+                    reply = '🛍️ **طريقة الطلب وإتمام الشراء:**\n1. اضغطي على زر **"إضافة للسلة"** تحت الشنطة المختارة.\n2. افتحي السلة من الأعلى واضغطي **"متابعة إجراءات الدفع والطلب"**.\n3. اكتبي اسمك والعنوان بالتفصيل، ثم حولي عربون الشحن (100 ج) عبر إنستاباي على **01010143989**.\n4. اضغطي **"تأكيد الطلب"** وسيتم إرسال الفاتورة بالصور لواتساب المالك وتجهيز الشحن فوراً!';
+                }
+                // 4. المعاينة وجودة الجلود
+                else if (t.includes('معاين') || t.includes('جلد') || t.includes('خام') || t.includes('فحص') || t.includes('استلام') || t.includes('اصل')) {
                     reply = '🔍 **المعاينة وجودة الجلود:**\n• جميع حقائب NOVA مصنوعة من **جلود طبيعية 100%** (جلد عجل محبب، كافيار فاخر، كانفاس معالج) مع أقفال وسحابات مذهبة متينة.\n• **يحق لكِ فحص الحقيبة وتفقد الجلد والبطانة مع المندوب قبل دفع باقي الحساب.**';
-                } else if (lower.includes('شحن') || lower.includes('توصيل') || lower.includes('كام يوم') || lower.includes('وقت') || lower.includes('محافظ')) {
-                    reply = '🚚 **مواعيد الشحن والتوصيل:**\n• القاهرة والجيزة: توصيل سريع خلال 24 - 48 ساعة.\n• الإسكندرية ومحافظات الوجه البحري والقناة: 2 - 3 أيام.\n• الصعيد والبحر الأحمر: 3 أيام عمل.\n• الشحن مجاني لكافة المحافظات!';
-                } else if (lower.includes('عربون') || lower.includes('ديبوزت') || lower.includes('إنستاباي') || lower.includes('instapay') || lower.includes('100')) {
-                    reply = '⚡ **عربون جدية الشحن (100 ج.م):**\nلحجز المندوب وتأكيد جدية الاستلام، يتم تحويل 100 ج.م عبر إنستاباي على حساب:\n📱 `mahmoudabokhashm2006@instapay` أو رقم `01005823798`\nوتُخصم الـ 100 ج بالكامل من قيمة الفاتورة عند الاستلام.';
-                } else if (lower.includes('chanel') || lower.includes('شانيل') || lower.includes('سواريه') || lower.includes('كريستال') || lower.includes('كافيار')) {
-                    reply = '🖤 **حقائب شانيل Chanel:**\nتتميز بتصاميم الكابتونيه الكلاسيكية، وجلد الكافيار المتين، وسلاسل الذهب والكرومات، بالإضافة إلى شنط السهرات المرصعة بكريستال سواروفسكي الفاخر.';
-                } else if (lower.includes('louis') || lower.includes('vuitton') || lower.includes('لويس') || lower.includes('فويتون') || lower.includes('lv') || lower.includes('هوبو')) {
+                }
+                // 5. الشحن ومواعيد التوصيل
+                else if (t.includes('شحن') || t.includes('توصيل') || t.includes('كام يوم') || t.includes('وقت') || t.includes('محافظ') || t.includes('مكان')) {
+                    reply = '🚚 **مواعيد الشحن والتوصيل:**\n• القاهرة والجيزة: توصيل سريع خلال 24 - 48 ساعة.\n• الإسكندرية ومحافظات الوجه البحري والقناة: 2 - 3 أيام.\n• الصعيد والبحر الأحمر: 3 أيام عمل.\n• الشحن مجاني لكافة المحافظات مع الفحص قبل الدفع!';
+                }
+                // 6. ماركة شانيل
+                else if (t.includes('chanel') || t.includes('شانيل') || t.includes('سواريه') || t.includes('كريستال') || t.includes('كافيار')) {
+                    reply = '🖤 **حقائب شانيل Chanel:**\nتتميز بتصاميم الكابتونيه الكلاسيكية، وجلد الكافيار المتين، وسلاسل الذهب، بالإضافة إلى شنط السهرات المرصعة بكريستال سواروفسكي الفاخر.';
+                }
+                // 7. ماركة لويس فويتون
+                else if (t.includes('louis') || t.includes('vuitton') || t.includes('لويس') || t.includes('فويتون') || t.includes('lv') || t.includes('هوبو')) {
                     reply = '⚜️ **حقائب لويس فويتون LV:**\nمتوفرة بتشكيلة المونوغرام الأيقوني والجلد الأسود المحفور (Shadow) وموديلات Loop Hobo و CarryAll الأكثر طلباً عالمياً.';
-                } else if (lower.includes('تواصل') || lower.includes('رقم') || lower.includes('واتس') || lower.includes('كلمني')) {
-                    reply = '📲 للتواصل المباشر مع المالك عبر واتساب أو الاتصال:\n📞 **01005823798**\nمتاحون لمساعدتكِ طوال اليوم!';
-                } else {
+                }
+                // 8. التواصل المباشر
+                else if (t.includes('تواصل') || t.includes('رقم') || t.includes('واتس') || t.includes('فون') || t.includes('كلمني')) {
+                    reply = '📲 للتواصل المباشر مع إدارة المتجر عبر واتساب أو الاتصال:\n📞 **01005823798**\nمتاحون لخدمتكِ على مدار اليوم!';
+                }
+                // رد عام
+                else {
                     reply = 'يسعدني مساعدتكِ! 👜 متوفر لدينا تشكيلة حصرية من الحقائب الجلدية الفاخرة مع معاينة مجانية قبل الدفع. للتواصل المباشر عبر واتساب: +201005823798.';
                 }
 
