@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NOVA | Luxury Leather Bags Studio</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@200;300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        nude: {
+                            50: '#fbf9f6',
+                            100: '#f6f1ea',
+                            200: '#ede3d5',
+                            300: '#decbbe',
+                            400: '#c5ab9a',
+                            500: '#a78a75',
+                            600: '#8c6f5b',
+                            800: '#4a3b31',
+                            900: '#2b231d'
+                        }
+                    },
+                    fontFamily: {
+                        alexandria: ['Alexandria', 'sans-serif'],
+                        montserrat: ['Montserrat', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Alexandria', sans-serif; background-color: #fbf9f6; color: #2b231d; scroll-behavior: smooth; }
+        body.lang-en { font-family: 'Montserrat', sans-serif; }
+        .custom-scroll::-webkit-scrollbar { width: 4px; }
+        .custom-scroll::-webkit-scrollbar-thumb { background: #decbbe; border-radius: 10px; }
+    </style>
+</head>
+<body class="antialiased selection:bg-nude-300 selection:text-nude-900">
+
+    <!-- شريط الإعلان العلوي -->
+    <div class="bg-nude-100 text-nude-800 border-b border-nude-200 text-[11px] sm:text-xs py-2.5 px-4 text-center font-light leading-relaxed flex items-center justify-between max-w-7xl mx-auto">
+        <span class="hidden md:inline">✨ فحص ومعاينة مجانية مع المندوب قبل دفع باقي الحساب</span>
+        <span class="mx-auto md:mx-0">
+            <span>تمتعي بخصم 15% على أول طلب بكود:</span> 
+            <strong class="font-semibold text-nude-900">NOVA15</strong>
+        </span>
+        <button onclick="toggleLanguage()" class="border border-nude-300 px-3 py-0.5 rounded-full text-[10px] font-medium bg-white/70 hover:bg-white transition flex items-center gap-1">
+            <i class="fa-solid fa-globe text-xs"></i>
+            <span id="lang-btn-text">English</span>
+        </button>
+    </div>
+
+    <!-- الهيدر الرئيسي -->
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-nude-200/60 transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <button onclick="toggleSideMenu()" class="flex items-center gap-2 text-nude-900 p-2 hover:opacity-75">
+                <i class="fa-solid fa-bars text-xl"></i>
+                <span class="text-xs font-medium uppercase tracking-widest hidden sm:inline">القائمة</span>
+            </button>
+
+            <a href="#" class="flex flex-col items-center">
+                <span class="text-2xl sm:text-3xl font-light tracking-[0.35em] text-nude-900">N O V A</span>
+                <span class="text-[9px] tracking-[0.3em] text-nude-500 font-light -mt-0.5">STUDIO CAIRO</span>
+            </a>
+
+            <div class="flex items-center gap-3">
+                <a href="https://wa.me/201005823798" target="_blank" class="hidden sm:flex items-center gap-1.5 text-xs text-nude-800 bg-nude-50 border border-nude-200 px-3 py-1.5 rounded-full hover:bg-nude-100 transition">
+                    <i class="fa-brands fa-whatsapp text-green-700 text-sm"></i>
+                    <span>خدمة العملاء</span>
+                </a>
+                <button onclick="toggleCart()" class="relative text-nude-900 p-2 hover:opacity-75">
+                    <i class="fa-solid fa-bag-shopping text-xl"></i>
+                    <span id="cart-count" class="absolute -top-1 -right-1 bg-nude-800 text-white text-[9px] w-4 h-4 rounded-full flex items-center justify-center font-normal">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- القائمة الجانبية -->
+    <div id="side-menu" class="fixed inset-0 z-50 overflow-hidden hidden">
+        <div class="absolute inset-0 bg-nude-900/40 backdrop-blur-xs" onclick="toggleSideMenu()"></div>
+        <div class="fixed inset-y-0 right-0 max-w-full flex" id="drawer-direction">
+            <div class="w-screen max-w-md bg-white p-6 sm:p-8 flex flex-col justify-between shadow-2xl border-l border-nude-200">
+                <div class="space-y-6">
+                    <div class="flex items-center justify-between border-b border-nude-200 pb-4">
+                        <span class="text-xs tracking-widest text-nude-500 uppercase">الماركات العالمية (100 موديل)</span>
+                        <button onclick="toggleSideMenu()" class="text-nude-400 hover:text-nude-900 text-lg">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+                    </div>
+
+                    <nav class="space-y-2.5 text-sm font-medium">
+                        <a href="#products" onclick="filterBrand('all'); toggleSideMenu()" class="block text-nude-900 hover:text-nude-500 transition py-1 border-b border-nude-100 flex justify-between items-center">
+                            <span>جميع الموديلات (100 حقيبة)</span>
+                            <span class="text-xs text-nude-400 font-normal">100</span>
+                        </a>
+                        <a href="#products" onclick="filterBrand('lv'); toggleSideMenu()" class="block text-nude-800 hover:text-nude-500 transition py-1 border-b border-nude-100 flex justify-between items-center">
+                            <span>Louis Vuitton ⚜️</span>
+                            <i class="fa-solid fa-chevron-left text-[10px] text-nude-400"></i>
+                        </a>
+                        <a href="#products" onclick="filterBrand('chanel'); toggleSideMenu()" class="block text-nude-800 hover:text-nude-500 transition py-1 border-b border-nude-100 flex justify-between items-center">
+                            <span>Chanel 🖤</span>
+                            <i class="fa-solid fa-chevron-left text-[10px] text-nude-400"></i>
+                        </a>
+                        <a href="#products" onclick="filterBrand('gucci'); toggleSideMenu()" class="block text-nude-800 hover:text-nude-500 transition py-1 border-b border-nude-100 flex justify-between items-center">
+                            <span>Gucci 🐎</span>
+                            <i class="fa-solid fa-chevron-left text-[10px] text-nude-400"></i>
+                        </a>
+                        <a href="#products" onclick="filterBrand('prada'); toggleSideMenu()" class="block text-nude-800 hover:text-nude-500 transition py-1 border-b border-nude-100 flex justify-between items-center">
+                            <span>Prada 👑</span>
+                            <i class="fa-solid fa-chevron-left text-[10px] text-nude-400"></i>
+                        </a>
+                        <a href="#products" onclick="filterBrand('coach'); toggleSideMenu()" class="block text-nude-800 hover:text-nude-500 transition py-1 border-b border-nude-100 flex justify-between items-center">
+                            <span>Coach 👜</span>
+                            <i class="fa-solid fa-chevron-left text-[10px] text-nude-400"></i>
+                        </a>
+                        <a href="#products" onclick="filterBrand('mk'); toggleSideMenu()" class="block text-nude-800 hover:text-nude-500 transition py-1 border-b border-nude-100 flex justify-between items-center">
+                            <span>Michael Kors ✨</span>
+                            <i class="fa-solid fa-chevron-left text-[10px] text-nude-400"></i>
+                        </a>
+                    </nav>
+
+                    <div class="bg-nude-50 p-4 rounded-2xl border border-nude-200 text-xs space-y-2">
+                        <div class="font-semibold text-nude-900 flex items-center gap-1.5">
+                            <i class="fa-solid fa-truck-fast text-green-700"></i>
+                            <span>شحن مجاني ومعاينة لجميع المحافظات</span>
+                        </div>
+                        <p class="text-nude-600 text-[11px] font-light">يحق لكِ فحص الحقيبة وتفقد الخامات مع المندوب قبل دفع باقي الحساب.</p>
+                    </div>
+                </div>
+
+                <div class="pt-6 border-t border-nude-200 text-xs">
+                    <p class="text-[10px] text-center text-nude-400 font-light">&copy; 2026 NOVA Studio Cairo</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- قسم الهيرو -->
+    <section class="py-10 sm:py-14 px-4 text-center space-y-4 max-w-3xl mx-auto">
+        <span class="text-nude-600 text-xs uppercase tracking-widest block font-medium">THE 100 SIGNATURE LUXURY COLLECTION</span>
+        <h1 class="text-3xl sm:text-5xl font-light text-nude-900 tracking-tight leading-tight">
+            تشكيلة الـ 100 حقيبة <br> <span class="font-semibold text-nude-600">بأعلى معايير الفخامة</span>
+        </h1>
+        <p class="text-xs sm:text-sm text-nude-600 font-light max-w-lg mx-auto">
+            جميع الموديلات مصنفة بالخامات الطبيعية، الأبعاد الدقيقة، مع خيار الطلب المباشر عبر واتساب أو الشات الذكي.
+        </p>
+    </section>
+
+    <!-- شريط فلاتر الماركات -->
+    <section id="products" class="py-4 max-w-xl mx-auto px-4 sm:px-6">
+        <div class="flex flex-wrap items-center justify-center gap-1.5 mb-8 bg-nude-100 p-1.5 rounded-2xl border border-nude-200 text-xs font-medium">
+            <button onclick="filterBrand('all')" class="filter-btn active px-3.5 py-1.5 rounded-xl bg-nude-900 text-white transition-all font-bold" data-brand="all">الكل (100)</button>
+            <button onclick="filterBrand('lv')" class="filter-btn px-3.5 py-1.5 rounded-xl text-nude-800 hover:bg-white transition-all" data-brand="lv">Louis Vuitton</button>
+            <button onclick="filterBrand('chanel')" class="filter-btn px-3.5 py-1.5 rounded-xl text-nude-800 hover:bg-white transition-all" data-brand="chanel">Chanel</button>
+            <button onclick="filterBrand('gucci')" class="filter-btn px-3.5 py-1.5 rounded-xl text-nude-800 hover:bg-white transition-all" data-brand="gucci">Gucci</button>
+            <button onclick="filterBrand('prada')" class="filter-btn px-3.5 py-1.5 rounded-xl text-nude-800 hover:bg-white transition-all" data-brand="prada">Prada</button>
+            <button onclick="filterBrand('coach')" class="filter-btn px-3.5 py-1.5 rounded-xl text-nude-800 hover:bg-white transition-all" data-brand="coach">Coach</button>
+            <button onclick="filterBrand('mk')" class="filter-btn px-3.5 py-1.5 rounded-xl text-nude-800 hover:bg-white transition-all" data-brand="mk">MK</button>
+        </div>
+
+        <!-- قائمة الشنط الـ 100 -->
+        <div class="space-y-8" id="products-list"></div>
+    </section>
+
+    <!-- سلة الشراء Drawer -->
+    <div id="cart-drawer" class="fixed inset-0 z-50 overflow-hidden hidden">
+        <div class="absolute inset-0 bg-nude-900/30 backdrop-blur-xs" onclick="toggleCart()"></div>
+        <div class="fixed inset-y-0 left-0 max-w-full flex" id="cart-direction">
+            <div class="w-screen max-w-sm bg-white p-6 flex flex-col justify-between shadow-2xl">
+                <div>
+                    <div class="flex items-center justify-between border-b border-nude-200 pb-4">
+                        <h2 class="text-xs tracking-widest uppercase font-medium text-nude-900">حقيبة مشترياتكِ في NOVA</h2>
+                        <button onclick="toggleCart()" class="text-nude-400 hover:text-nude-900"><i class="fa-solid fa-xmark text-lg"></i></button>
+                    </div>
+                    <div id="cart-items" class="py-4 space-y-3 max-h-[60vh] overflow-y-auto custom-scroll"></div>
+                </div>
+
+                <div class="border-t border-nude-200 pt-4 space-y-3">
+                    <div class="flex justify-between text-xs text-nude-900">
+                        <span>الإجمالي:</span>
+                        <span id="cart-total" class="font-semibold text-sm">0 EGP</span>
+                    </div>
+                    <button onclick="openCheckoutModal()" class="w-full py-3.5 bg-nude-900 text-white rounded-full text-xs font-medium hover:bg-nude-800 transition flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-lock text-xs"></i>
+                        <span>متابعة إجراءات الدفع والطلب</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- نافذة إتمام الطلب والدفع -->
+    <div id="checkout-modal" class="fixed inset-0 z-50 overflow-y-auto hidden">
+        <div class="fixed inset-0 bg-nude-900/40 backdrop-blur-xs" onclick="closeCheckoutModal()"></div>
+        <div class="relative min-h-screen flex items-center justify-center p-4">
+            <div class="relative bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border border-nude-200 my-8">
+                <div class="flex justify-between items-center border-b border-nude-200 pb-4 mb-4">
+                    <h3 class="text-sm font-semibold text-nude-900 flex items-center gap-2">
+                        <i class="fa-solid fa-lock text-green-700"></i>
+                        <span>إتمام الطلب وتأكيد الشحن</span>
+                    </h3>
+                    <button onclick="closeCheckoutModal()" class="text-nude-400 hover:text-nude-900"><i class="fa-solid fa-xmark text-lg"></i></button>
+                </div>
+
+                <form id="checkout-form" onsubmit="handlePlaceOrder(event)" class="space-y-3.5 text-xs">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <div>
+                            <label class="block text-nude-800 mb-1 font-medium">الاسم بالكامل *</label>
+                            <input type="text" id="order-name" required placeholder="سارة أحمد" class="w-full bg-nude-50 border border-nude-200 rounded-xl px-3 py-2.5 focus:outline-none focus:border-nude-800">
+                        </div>
+                        <div>
+                            <label class="block text-nude-800 mb-1 font-medium">رقم الموبايل (واتساب) *</label>
+                            <input type="tel" id="order-phone" required placeholder="01012345678" class="w-full bg-nude-50 border border-nude-200 rounded-xl px-3 py-2.5 focus:outline-none focus:border-nude-800">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-nude-800 mb-1 font-medium">منطقة التوصيل *</label>
+                        <select id="order-zone" class="w-full bg-nude-50 border border-nude-200 rounded-xl px-3 py-2.5 focus:outline-none focus:border-nude-800 text-xs">
+                            <option value="Cairo & Giza">القاهرة والجيزة (توصيل 24-48 ساعة) - شحن مجاني</option>
+                            <option value="Alexandria">الإسكندرية والساحل (2-3 أيام) - شحن مجاني</option>
+                            <option value="Delta & Canal">الدلتا والقناة - شحن مجاني</option>
+                            <option value="Upper Egypt">الصعيد والبحر الأحمر - شحن مجاني</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-nude-800 mb-1 font-medium">العنوان بالتفصيل *</label>
+                        <input type="text" id="order-address" required placeholder="الشارع / العمارة / الشقة" class="w-full bg-nude-50 border border-nude-200 rounded-xl px-3 py-2.5 focus:outline-none focus:border-nude-800">
+                    </div>
+
+                    <div class="bg-amber-50 border border-amber-300 rounded-2xl p-3.5 space-y-2 text-amber-950">
+                        <div class="flex items-center justify-between">
+                            <span class="font-bold text-amber-900">⚡ تحويل عربون الشحن (100 ج) عبر إنستاباي:</span>
+                            <span class="text-[10px] bg-purple-100 text-purple-800 px-2 py-0.5 rounded font-bold">InstaPay</span>
+                        </div>
+                        <a href="https://ipn.eg/S/mahmoudabokhashm2006/instapay/46V1Wk" target="_blank" class="w-full py-2 bg-purple-900 text-white rounded-xl font-bold flex items-center justify-center gap-1.5 text-xs">
+                            <span>اضغطي هنا للتحويل المباشر في إنستاباي 📲</span>
+                        </a>
+                        <div class="text-[11px] font-mono bg-white p-2 rounded-lg border border-amber-200 flex justify-between items-center">
+                            <span>mahmoudabokhashm2006@instapay</span>
+                            <button type="button" onclick="navigator.clipboard.writeText('mahmoudabokhashm2006@instapay'); alert('تم نسخ الحساب!');" class="text-[10px] bg-amber-100 px-2 py-0.5 rounded">نسخ</button>
+                        </div>
+                        <input type="text" id="instapay-sender" required placeholder="اسم أو رقم الحساب المحوّل منه على إنستاباي *" class="w-full bg-white border border-amber-300 rounded-xl px-3 py-2 text-xs focus:outline-none">
+                    </div>
+
+                    <button type="submit" class="w-full py-3.5 bg-nude-900 text-white rounded-full font-medium text-xs hover:bg-nude-800 transition">
+                        تأكيد الطلب وإرسال الفاتورة للمالك
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- نافذة تأكيد الطلب الناجح -->
+    <div id="success-modal" class="fixed inset-0 z-50 overflow-y-auto hidden flex items-center justify-center p-4">
+        <div class="fixed inset-0 bg-nude-900/40 backdrop-blur-xs"></div>
+        <div class="relative bg-white rounded-3xl max-w-sm w-full p-6 text-center space-y-4 shadow-2xl border border-nude-200">
+            <div class="w-12 h-12 bg-green-100 text-green-700 rounded-full flex items-center justify-center mx-auto text-xl font-bold">✓</div>
+            <h3 class="text-base font-semibold text-nude-900">تم تسجيل طلبكِ بنجاح!</h3>
+            <p class="text-xs text-nude-600"><span id="success-invoice-no" class="font-bold text-nude-900"></span></p>
+            <div id="success-items-preview" class="bg-nude-50 p-3 rounded-2xl border border-nude-200 text-xs text-right space-y-1.5"></div>
+            <a id="success-whatsapp-btn" href="#" target="_blank" class="w-full py-3 bg-green-700 text-white text-xs rounded-full font-medium flex items-center justify-center gap-2 hover:bg-green-800 transition">
+                <i class="fa-brands fa-whatsapp text-base"></i>
+                <span>إرسال الفاتورة والصور لواتساب المالك</span>
+            </a>
+            <button onclick="closeSuccessModal()" class="w-full py-2 border border-nude-300 text-nude-800 text-xs rounded-full font-medium">العودة للمتجر</button>
+        </div>
+    </div>
+
+    <!-- زر وشات بوت NOVA الذكي -->
+    <div class="fixed bottom-6 right-6 z-40">
+        <button onclick="toggleChatbot()" class="bg-nude-900 text-white w-12 h-12 rounded-full flex items-center justify-center text-lg shadow-2xl hover:scale-105 transition">
+            <i class="fa-solid fa-headset"></i>
+        </button>
+        <div id="chatbot-window" class="hidden absolute bottom-16 right-0 w-[320px] sm:w-[350px] bg-white rounded-3xl shadow-2xl border border-nude-200 overflow-hidden flex flex-col h-[440px]">
+            <div class="bg-nude-900 text-white p-3.5 flex items-center justify-between">
+                <span class="text-xs font-medium">مستشار NOVA الذكي (100 موديل)</span>
+                <button onclick="toggleChatbot()"><i class="fa-solid fa-xmark text-sm"></i></button>
+            </div>
+            <div id="chat-messages" class="flex-1 p-3 overflow-y-auto space-y-2 text-xs custom-scroll bg-nude-50/50">
+                <div class="bg-white p-2.5 rounded-2xl border border-nude-200 text-nude-900">
+                    أهلاً بكِ في NOVA! متوفر لدينا 100 موديل فاخر. يمكنكِ طلب أي حقيبة مباشرة من هنا 👜✨
+                </div>
+            </div>
+            <form onsubmit="handleChatSubmit(event)" class="p-2.5 border-t border-nude-200 bg-white flex gap-1.5">
+                <input id="chat-input" type="text" placeholder="اكتبي استفساركِ أو اسم الشنطة..." class="flex-1 bg-nude-50 border border-nude-200 rounded-full px-3 py-1.5 text-xs focus:outline-none">
+                <button type="submit" class="bg-nude-900 text-white px-3 py-1.5 rounded-full text-xs"><i class="fa-solid fa-paper-plane"></i></button>
+            </form>
+        </div>
+    </div>
+
+    <!-- مصفوفة الشنط بالترتيب الدقيق للصور والأسماء السهلة -->
+    <script>
+        const OWNER_PHONE = "201005823798";
+        const INSTAPAY_HANDLE = "mahmoudabokhashm2006@instapay";
+
+        let currentLang = 'ar';
+        let cart = [];
+        let currentBrandFilter = 'all';
+
+        // الشنط الـ 26 الأولى المرتبة تماماً حسب الصور المرفقة
+        const baseBags = [
+            // 1
+            { id: 1, brand: 'lv', title_ar: 'Louis Vuitton Loop Hobo (Monogram Canvas)', price: 1850, dim: '38 × 26 × 10 سم', mat: 'كانفاس مونوغرام + جلد طبيعي', close: 'سحاب علوي مؤمن' },
+            // 2
+            { id: 2, brand: 'lv', title_ar: 'Louis Vuitton Loop Hobo (Black Grained Leather)', price: 1950, dim: '38 × 26 × 10 سم', mat: 'جلد عجل محبب 100%', close: 'سحاب علوي' },
+            // 3
+            { id: 3, brand: 'lv', title_ar: 'Louis Vuitton Loop Hobo (Burgundy Glazed Leather)', price: 1980, dim: '38 × 26 × 10 سم', mat: 'جلد ملمع فاخر معتق', close: 'سحاب علوي مؤمن' },
+            // 4
+            { id: 4, brand: 'lv', title_ar: 'Louis Vuitton Loop Hobo (Denim Jacquard Monogram)', price: 1920, dim: '38 × 26 × 10 سم', mat: 'دنيم جاكار + جلد طبيعي', close: 'سحاب علوي' },
+            // 5
+            { id: 5, brand: 'lv', title_ar: 'Louis Vuitton Atlantis Bucket Bag (Monogram Canvas)', price: 1880, dim: '34 × 34 × 13 سم', mat: 'كانفاس مونوغرام + فاتشيتا', close: 'مغناطيس وقفل مذهب' },
+            // 6
+            { id: 6, brand: 'lv', title_ar: 'Louis Vuitton Papillon Barrel / Cylinder Bag', price: 1650, dim: '26 × 13 × 13 سم', mat: 'كانفاس مونوغرام أسطواني', close: 'سحاب كامل' },
+            // 7
+            { id: 7, brand: 'lv', title_ar: 'Louis Vuitton Alma BB Classic (Monogram Canvas)', price: 1790, dim: '23.5 × 17.5 × 11.5 سم', mat: 'كانفاس مونوغرام + قاعدة جلد', close: 'سحاب مزدوج وقفل' },
+            // 8
+            { id: 8, brand: 'lv', title_ar: 'Louis Vuitton East-West Baguette (Monogram Canvas)', price: 1720, dim: '27 × 12 × 7 سم', mat: 'كانفاس مونوغرام + أحزمة جلد', close: 'قلاب بمغناطيس' },
+            // 9
+            { id: 9, brand: 'lv', title_ar: 'Louis Vuitton Monogram Shadow East-West (Black)', price: 1820, dim: '30 × 12 × 10 سم', mat: 'جلد شادو أسود محفور', close: 'سحاب مع قفل مذهب' },
+            // 10
+            { id: 10, brand: 'lv', title_ar: 'Louis Vuitton Dune Cylinder East-West Bag', price: 1780, dim: '30 × 12 × 10 سم', mat: 'كانفاس ديون عاجي + جلد عسلي', close: 'سحاب مع قفل ذهبي' },
+            // 11
+            { id: 11, brand: 'lv', title_ar: 'Louis Vuitton Bucket Bag (Black Monogram Shadow)', price: 1890, dim: '28 × 26 × 12 سم', mat: 'جلد عجل منقوش ومطفي', close: 'مغناطيس علوي' },
+            // 12
+            { id: 12, brand: 'lv', title_ar: 'Louis Vuitton Speedy Bandoulière 20 (Black Shadow)', price: 1950, dim: '20 × 13 × 12 سم', mat: 'جلد شادو أسود + سلسلة', close: 'سحاب وقفل' },
+            // 13
+            { id: 13, brand: 'lv', title_ar: 'Louis Vuitton Alma BB (Black Monogram Shadow)', price: 1920, dim: '23.5 × 17.5 × 11.5 سم', mat: 'جلد أسود محفور بالكامل', close: 'سحاب مزدوج وقفل' },
+            // 14
+            { id: 14, brand: 'lv', title_ar: 'Louis Vuitton Low Key Hobo MM (Deep Burgundy)', price: 2150, dim: '42 × 32 × 12 سم', mat: 'جلد توريون إيطالي طبيعي', close: 'سحاب مؤمن' },
+            // 15
+            { id: 15, brand: 'lv', title_ar: 'Louis Vuitton Low Key Hobo MM (Black Glaze)', price: 2180, dim: '42 × 32 × 12 سم', mat: 'جلد عجل ملمع معتق', close: 'سحاب علوي' },
+            // 16
+            { id: 16, brand: 'lv', title_ar: 'Louis Vuitton CarryAll Cargo (Blue Denim Jacquard)', price: 2050, dim: '38 × 24 × 16 سم', mat: 'دنيم جاكار مطرز بالكامل', close: 'سحاب مزدوج وقفل' },
+            // 17
+            { id: 17, brand: 'lv', title_ar: 'Louis Vuitton CarryAll Cargo (Black Crinkled Leather)', price: 2100, dim: '38 × 24 × 16 سم', mat: 'جلد مجعد ملمع معتق', close: 'سحاب مزدوج وقفل' },
+            // 18
+            { id: 18, brand: 'lv', title_ar: 'Louis Vuitton Speedy Soft 30 (Sage Green Empreinte)', price: 1980, dim: '30 × 21 × 17 سم', mat: 'جلد عجل سوفت ميرمية', close: 'سحاب وقفل' },
+            // 19
+            { id: 19, brand: 'lv', title_ar: 'Louis Vuitton Vanity Case PM (Sage Green Leather)', price: 1850, dim: '20 × 12 × 10 سم', mat: 'جلد منقوش ومبطن + سلسلة', close: 'سحاب دائري بمغلاق' },
+            // 20
+            { id: 20, brand: 'lv', title_ar: 'Louis Vuitton OnTheGo PM (Pastel Iridescent Monogram)', price: 2200, dim: '25 × 19 × 11.5 سم', mat: 'جلد لؤلؤي بزهور متغيرة اللون', close: 'كباس داخلي' },
+            // 21
+            { id: 21, brand: 'prada', title_ar: 'Luxury Woven Sky Blue Summer Tote with Bow', price: 1650, dim: '36 × 26 × 12 سم', mat: 'نسيج منسوج فاخر + فيونكة جلد', close: 'مغناطيس علوي' },
+            // 22
+            { id: 22, brand: 'chanel', title_ar: 'Chanel Classic Flap (Plum Quilted Velvet)', price: 2150, dim: '25 × 15 × 7 سم', mat: 'مخمل كابتونيه نبيتي فاخر', close: 'قفل CC الدوار' },
+            // 23
+            { id: 23, brand: 'chanel', title_ar: 'Chanel 22 Mini Handbag (Baby Pink Calfskin)', price: 2250, dim: '35 × 37 × 7 سم', mat: 'جلد عجل مبطن وردي ناعم', close: 'رباط سحب مغناطيسي' },
+            // 24
+            { id: 24, brand: 'chanel', title_ar: 'Chanel Mini Shopping Tote (Black Quilted Caviar)', price: 2100, dim: '20 × 20 × 9 سم', mat: 'جلد كافيار أسود فاخر', close: 'مغناطيس وسلسلة' },
+            // 25
+            { id: 25, brand: 'chanel', title_ar: 'Chanel Bowling Bag (Smooth Black Calfskin)', price: 2050, dim: '32 × 18 × 12 سم', mat: 'جلد عجل أملس طبيعي', close: 'سحاب علوي كامل' },
+            // 26
+            { id: 26, brand: 'chanel', title_ar: 'Chanel Bowling Bag (Camel Beige Quilted Suede)', price: 1980, dim: '30 × 18 × 12 سم', mat: 'شمواه طبيعي مدبوغ كابتونيه', close: 'سحاب علوي' }
+        ];
+
+        // مصفوفة الـ 100 حقيبة
+        const brandsPool = ['coach', 'mk', 'gucci', 'prada', 'lv', 'chanel'];
+        const fullBagsData = [];
+
+        for (let i = 1; i <= 100; i++) {
+            if (i <= baseBags.length) {
+                const b = baseBags[i - 1];
+                fullBagsData.push({
+                    ...b,
+                    id: i,
+                    desc_ar: `حقيبة فاخرة من أعلى درجات الجلد الطبيعي، تشطيب متقن عالي الجودة مع ملحقات الماركة كاملة.`,
+                    tag_ar: b.brand.toUpperCase() + ' ✨'
+                });
+            } else {
+                const bBrand = brandsPool[(i - 1) % brandsPool.length];
+                const bPrice = 1450 + ((i * 17) % 850);
+                fullBagsData.push({
+                    id: i,
+                    brand: bBrand,
+                    title_ar: `حقيبة ${bBrand.toUpperCase()} Signature Edition #${i}`,
+                    price: bPrice,
+                    dim: `${24 + (i % 12)} × ${15 + (i % 8)} × ${7 + (i % 5)} سم`,
+                    mat: 'جلد طبيعي معالج فائق الجودة',
+                    close: 'إغلاق مؤمن بقطع معدنية مذهبة',
+                    desc_ar: `موديل راقٍ من الجلد الطبيعي المدبوغ بعناية بتشطيب فائق الدقة ومساحة تخزين مثالية.`,
+                    tag_ar: bBrand.toUpperCase() + ' 🌟'
+                });
+            }
+        }
+
+        // محرك ذكي يجرب مسارات المجلد المسمى بالترتيب
+        function handleImgFallback(img, id, attempt = 1) {
+            if (attempt === 1) {
+                img.src = `images/${id}.png`;
+                img.onerror = () => handleImgFallback(img, id, 2);
+            } else if (attempt === 2) {
+                img.src = `images/${id}.jpg`;
+                img.onerror = () => handleImgFallback(img, id, 3);
+            } else if (attempt === 3) {
+                img.src = `${id}.webp`;
+                img.onerror = () => handleImgFallback(img, id, 4);
+            } else if (attempt === 4) {
+                img.src = `${id}.png`;
+                img.onerror = () => handleImgFallback(img, id, 5);
+            } else {
+                img.onerror = null;
+                img.src = 'https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=800&q=80';
+            }
+        }
+
+        function renderUI() {
+            const listEl = document.getElementById('products-list');
+            if (!listEl) return;
+
+            const filtered = (currentBrandFilter === 'all') 
+                ? fullBagsData 
+                : fullBagsData.filter(b => b.brand === currentBrandFilter);
+
+            listEl.innerHTML = filtered.map(bag => {
+                const directMsg = encodeURIComponent(
+                    `*طلب مباشر لشنطة من NOVA:*\n👜 *الموديل:* ${bag.title_ar} (رقم #${bag.id})\n💵 *السعر:* ${bag.price} ج.م\n🔢 *رقم الموديل:* #${bag.id}`
+                );
+
+                return `
+                    <div class="product-card bg-white rounded-3xl p-4 sm:p-5 border border-nude-200 shadow-xs space-y-4">
+                        <div class="relative w-full aspect-[4/3] bg-nude-50 rounded-2xl overflow-hidden flex items-center justify-center p-3">
+                            <span class="absolute top-3 right-3 bg-nude-900 text-white text-[10px] px-2.5 py-0.5 rounded-full font-bold z-10">
+                                #${bag.id}
+                            </span>
+                            <span class="absolute top-3 left-3 bg-white/90 backdrop-blur-xs text-nude-800 text-[10px] px-2.5 py-0.5 rounded-full border border-nude-200 font-medium z-10">
+                                ${bag.tag_ar}
+                            </span>
+                            
+                            <!-- محاولة تحميل الصورة من مسار images/ برقم الشنطة -->
+                            <img src="images/${bag.id}.webp" 
+                                 alt="${bag.title_ar}" 
+                                 class="w-full h-full object-contain hover:scale-105 transition-transform duration-500" 
+                                 loading="lazy"
+                                 onerror="handleImgFallback(this, ${bag.id}, 1)">
+                        </div>
+
+                        <div class="space-y-2.5">
+                            <div class="flex items-center justify-between">
+                                <span class="text-[11px] text-nude-500 font-light">${bag.mat}</span>
+                                <span class="text-sm font-semibold text-nude-900">${bag.price.toLocaleString()} ج.م</span>
+                            </div>
+                            <h3 class="font-medium text-nude-900 text-base">${bag.title_ar}</h3>
+                            <p class="text-xs text-nude-600 font-light leading-relaxed">${bag.desc_ar}</p>
+                            
+                            <div class="grid grid-cols-3 gap-2 bg-nude-50 p-2.5 rounded-xl text-[10px] text-nude-600 text-center border border-nude-200/60">
+                                <div><span class="text-nude-400 block">الأبعاد</span> ${bag.dim}</div>
+                                <div><span class="text-nude-400 block">الخامة</span> ${bag.mat}</div>
+                                <div><span class="text-nude-400 block">الإغلاق</span> ${bag.close}</div>
+                            </div>
+
+                            <div class="flex gap-2 pt-1">
+                                <button onclick="addToCart('${bag.title_ar}', ${bag.price}, 'images/${bag.id}.webp')" 
+                                        class="flex-1 py-3 bg-nude-900 text-white rounded-full text-xs font-medium hover:bg-nude-800 transition flex items-center justify-center gap-2">
+                                    <i class="fa-solid fa-bag-shopping"></i>
+                                    <span>إضافة للسلة</span>
+                                </button>
+                                <a href="https://wa.me/${OWNER_PHONE}?text=${directMsg}" target="_blank" 
+                                   class="w-12 h-12 bg-green-50 text-green-700 border border-green-200 rounded-full flex items-center justify-center hover:bg-green-100 transition text-lg" title="طلب مباشر لواتساب المالك">
+                                    <i class="fa-brands fa-whatsapp"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            updateCartUI();
+        }
+
+        function filterBrand(brand) {
+            currentBrandFilter = brand;
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                if (btn.getAttribute('data-brand') === brand) {
+                    btn.className = 'filter-btn active px-3.5 py-1.5 rounded-xl bg-nude-900 text-white transition-all font-bold';
+                } else {
+                    btn.className = 'filter-btn px-3.5 py-1.5 rounded-xl text-nude-800 hover:bg-white transition-all';
+                }
+            });
+            renderUI();
+        }
+
+        function toggleSideMenu() { document.getElementById('side-menu').classList.toggle('hidden'); }
+        function toggleCart() { document.getElementById('cart-drawer').classList.toggle('hidden'); }
+        function toggleChatbot() { document.getElementById('chatbot-window').classList.toggle('hidden'); }
+
+        function addToCart(title, price, image) {
+            cart.push({ title, price, image });
+            updateCartUI();
+            toggleCart();
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const countEl = document.getElementById('cart-count');
+            const itemsEl = document.getElementById('cart-items');
+            const totalEl = document.getElementById('cart-total');
+
+            if (!countEl || !itemsEl || !totalEl) return;
+
+            countEl.innerText = cart.length;
+
+            if (cart.length === 0) {
+                itemsEl.innerHTML = `<p class="text-nude-400 text-center py-8 text-xs">سلتكِ فارغة حالياً</p>`;
+                totalEl.innerText = `0 ج.م`;
+                return;
+            }
+
+            let total = 0;
+            itemsEl.innerHTML = cart.map((item, index) => {
+                total += item.price;
+                return `
+                    <div class="flex items-center gap-2.5 bg-nude-50 p-2.5 rounded-xl border border-nude-200">
+                        <img src="${item.image}" class="w-10 h-10 object-contain bg-white rounded-lg p-1" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=800&q=80';">
+                        <div class="flex-1">
+                            <h4 class="text-xs font-medium text-nude-900 truncate">${item.title}</h4>
+                            <span class="text-xs text-nude-600 font-semibold">${item.price.toLocaleString()} ج.م</span>
+                        </div>
+                        <button onclick="removeFromCart(${index})" class="text-nude-400 hover:text-red-500 text-xs p-1">
+                            <i class="fa-solid fa-trash-can"></i>
+                        </button>
+                    </div>
+                `;
+            }).join('');
+
+            totalEl.innerText = `${total.toLocaleString()} ج.م`;
+        }
+
+        function openCheckoutModal() {
+            if (cart.length === 0) { alert('سلتكِ فارغة حالياً.'); return; }
+            toggleCart();
+            document.getElementById('checkout-modal').classList.remove('hidden');
+        }
+
+        function closeCheckoutModal() { document.getElementById('checkout-modal').classList.add('hidden'); }
+        function closeSuccessModal() { document.getElementById('success-modal').classList.add('hidden'); }
+
+        function handlePlaceOrder(e) {
+            e.preventDefault();
+            const name = document.getElementById('order-name').value.trim();
+            const phone = document.getElementById('order-phone').value.trim();
+            const zone = document.getElementById('order-zone').value;
+            const address = document.getElementById('order-address').value.trim();
+            const sender = document.getElementById('instapay-sender').value.trim();
+            const total = cart.reduce((sum, item) => sum + item.price, 0);
+            const invoiceNo = 'NOV-' + Math.floor(1000 + Math.random() * 9000);
+
+            let itemsText = '';
+            cart.forEach((item, i) => { itemsText += `\n  ${i+1}. *${item.title}* (${item.price} ج.م)`; });
+
+            const msg = 
+                `🔔 *طلب جديد عبر متجر NOVA (100 شنطة)*\n` +
+                `---------------------------------\n` +
+                `🧾 *رقم الفاتورة:* #${invoiceNo}\n` +
+                `👤 *اسم العميل:* ${name}\n` +
+                `📱 *رقم الموبايل:* ${phone}\n` +
+                `📍 *المنطقة:* ${zone}\n` +
+                `🏠 *العنوان:* ${address}\n` +
+                `⚡ *حساب إنستاباي المحول منه (عربون 100 ج):* ${sender}\n` +
+                `👜 *المنتجات المطلوبة:*${itemsText}\n` +
+                `💰 *الإجمالي المستحق:* ${total.toLocaleString()} ج.م (شحن مجاني ومعاينة)`;
+
+            const waUrl = `https://wa.me/${OWNER_PHONE}?text=${encodeURIComponent(msg)}`;
+
+            document.getElementById('success-invoice-no').innerText = `فاتورة #${invoiceNo}`;
+            document.getElementById('success-whatsapp-btn').href = waUrl;
+
+            const previewEl = document.getElementById('success-items-preview');
+            previewEl.innerHTML = `
+                <p class="font-bold text-nude-900 border-b border-nude-200 pb-1">المنتجات المطلوبة:</p>
+                ${cart.map(item => `<div>• ${item.title}</div>`).join('')}
+                <p class="pt-1 font-bold text-nude-900 border-t border-nude-200">الإجمالي: ${total.toLocaleString()} ج.م</p>
+            `;
+
+            closeCheckoutModal();
+            cart = [];
+            updateCartUI();
+            document.getElementById('success-modal').classList.remove('hidden');
+            setTimeout(() => { window.open(waUrl, '_blank'); }, 600);
+        }
+
+        function handleChatSubmit(e) {
+            e.preventDefault();
+            const input = document.getElementById('chat-input');
+            const val = input.value.trim();
+            if (!val) return;
+
+            const chatMessages = document.getElementById('chat-messages');
+            chatMessages.innerHTML += `<div class="bg-nude-900 text-white p-2 rounded-2xl mr-auto max-w-[80%]">${val}</div>`;
+            input.value = '';
+
+            setTimeout(() => {
+                chatMessages.innerHTML += `
+                    <div class="bg-white p-2.5 rounded-2xl border border-nude-200 text-nude-900">
+                        يسعدني مساعدتكِ! يمكنكِ طلب أي من الـ 100 موديل بالضغط على زر "إضافة للسلة" أو التواصل المباشر مع المالك على واتساب: +201005823798.
+                    </div>
+                `;
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }, 400);
+        }
+
+        function toggleLanguage() {
+            currentLang = (currentLang === 'ar') ? 'en' : 'ar';
+            document.documentElement.setAttribute('lang', currentLang);
+            document.documentElement.setAttribute('dir', (currentLang === 'ar') ? 'rtl' : 'ltr');
+            document.body.className = (currentLang === 'en') ? 'antialiased lang-en' : 'antialiased';
+            document.getElementById('lang-btn-text').innerText = (currentLang === 'ar') ? 'English' : 'العربية';
+            renderUI();
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            renderUI();
+        });
+    </script>
+</body>
+          </html>
