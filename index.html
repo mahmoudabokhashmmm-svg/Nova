@@ -284,24 +284,38 @@
         <button onclick="toggleChatbot()" class="bg-nude-900 text-white w-12 h-12 rounded-full flex items-center justify-center text-lg shadow-2xl hover:scale-105 transition">
             <i class="fa-solid fa-headset"></i>
         </button>
-        <div id="chatbot-window" class="hidden absolute bottom-16 right-0 w-[320px] sm:w-[350px] bg-white rounded-3xl shadow-2xl border border-nude-200 overflow-hidden flex flex-col h-[440px]">
+        <div id="chatbot-window" class="hidden absolute bottom-16 right-0 w-[320px] sm:w-[350px] bg-white rounded-3xl shadow-2xl border border-nude-200 overflow-hidden flex flex-col h-[460px]">
             <div class="bg-nude-900 text-white p-3.5 flex items-center justify-between">
-                <span class="text-xs font-medium">مستشار NOVA الذكي</span>
+                <div class="flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
+                    <span class="text-xs font-medium">مستشار NOVA الذكي للحقائب</span>
+                </div>
                 <button onclick="toggleChatbot()"><i class="fa-solid fa-xmark text-sm"></i></button>
             </div>
+            
             <div id="chat-messages" class="flex-1 p-3 overflow-y-auto space-y-2 text-xs custom-scroll bg-nude-50/50">
-                <div class="bg-white p-2.5 rounded-2xl border border-nude-200 text-nude-900">
-                    أهلاً بكِ في NOVA! متوفر لدينا تشكيلة حصرية من الحقائب الجلدية الفاخرة. يمكنكِ طلب أي شنطة مباشرة عبر المحادثة 👜✨
+                <div class="bg-white p-3 rounded-2xl border border-nude-200 text-nude-900 leading-relaxed">
+                    أهلاً بكِ في <strong>NOVA</strong>! 👜✨<br>
+                    أنا مستشاركِ الذكي لمساعدتكِ في كل ما يخص الحقائب الفاخرة، طريقة الطلب، الشحن، أو المعاينة قبل الدفع. كيف أساعدكِ اليوم؟
                 </div>
             </div>
+
+            <!-- أزرار سريعة للأسئلة -->
+            <div class="px-2.5 py-1.5 bg-white border-t border-nude-200 flex gap-1 overflow-x-auto scrollbar-none">
+                <button type="button" onclick="sendQuickBagPrompt('طريقة عمل أوردر؟')" class="px-2 py-0.5 bg-nude-100 hover:bg-nude-200 rounded-full text-[10px] text-nude-800 whitespace-nowrap">طريقة الطلب؟</button>
+                <button type="button" onclick="sendQuickBagPrompt('المعاينة وفحص الجلد قبل الدفع')" class="px-2 py-0.5 bg-nude-100 hover:bg-nude-200 rounded-full text-[10px] text-nude-800 whitespace-nowrap">المعاينة والخامات؟</button>
+                <button type="button" onclick="sendQuickBagPrompt('تفاصيل الشحن والتوصيل')" class="px-2 py-0.5 bg-nude-100 hover:bg-nude-200 rounded-full text-[10px] text-nude-800 whitespace-nowrap">الشحن ومواعيده؟</button>
+                <button type="button" onclick="sendQuickBagPrompt('عربون الشحن إنستاباي')" class="px-2 py-0.5 bg-nude-100 hover:bg-nude-200 rounded-full text-[10px] text-nude-800 whitespace-nowrap">عربون 100 ج؟</button>
+            </div>
+
             <form onsubmit="handleChatSubmit(event)" class="p-2.5 border-t border-nude-200 bg-white flex gap-1.5">
-                <input id="chat-input" type="text" placeholder="اكتبي استفساركِ أو اسم الشنطة..." class="flex-1 bg-nude-50 border border-nude-200 rounded-full px-3 py-1.5 text-xs focus:outline-none">
+                <input id="chat-input" type="text" placeholder="اكتبي استفساركِ هنا..." class="flex-1 bg-nude-50 border border-nude-200 rounded-full px-3 py-1.5 text-xs focus:outline-none">
                 <button type="submit" class="bg-nude-900 text-white px-3 py-1.5 rounded-full text-xs"><i class="fa-solid fa-paper-plane"></i></button>
             </form>
         </div>
     </div>
 
-    <!-- مصفوفة الشنط بالأسعار المحدثة وحذف العناصر المحددة -->
+    <!-- مصفوفة الشنط والشات بوت المطور -->
     <script>
         const OWNER_PHONE = "201005823798";
         const INSTAPAY_HANDLE = "mahmoudabokhashm2006@instapay";
@@ -310,91 +324,50 @@
         let cart = [];
         let currentBrandFilter = 'all';
 
-        // الشنط الأساسية مع تعديل الأسعار لتبدأ من 3,500 إلى 8,200 ج.م
         const rawBags = [
-            // 1
             { id: 1, brand: 'lv', title_ar: 'Louis Vuitton Loop Hobo (Monogram Canvas)', price: 5400, dim: '38 × 26 × 10 سم', mat: 'كانفاس مونوغرام + جلد طبيعي', close: 'سحاب علوي مؤمن' },
-            // 2
             { id: 2, brand: 'lv', title_ar: 'Louis Vuitton Loop Hobo (Black Grained Leather)', price: 5900, dim: '38 × 26 × 10 سم', mat: 'جلد عجل محبب 100%', close: 'سحاب علوي' },
-            // 3
             { id: 3, brand: 'lv', title_ar: 'Louis Vuitton Loop Hobo (Burgundy Glazed Leather)', price: 6200, dim: '38 × 26 × 10 سم', mat: 'جلد ملمع فاخر معتق', close: 'سحاب علوي مؤمن' },
-            // 4
             { id: 4, brand: 'lv', title_ar: 'Louis Vuitton Loop Hobo (Denim Jacquard Monogram)', price: 5600, dim: '38 × 26 × 10 سم', mat: 'دنيم جاكار + جلد طبيعي', close: 'سحاب علوي' },
-            // 5
             { id: 5, brand: 'lv', title_ar: 'Louis Vuitton Atlantis Bucket Bag (Monogram Canvas)', price: 5500, dim: '34 × 34 × 13 سم', mat: 'كانفاس مونوغرام + فاتشيتا', close: 'مغناطيس وقفل مذهب' },
-            // 6
             { id: 6, brand: 'lv', title_ar: 'Louis Vuitton Papillon Barrel / Cylinder Bag', price: 4800, dim: '26 × 13 × 13 سم', mat: 'كانفاس مونوغرام أسطواني', close: 'سحاب كامل' },
-            // 7
             { id: 7, brand: 'lv', title_ar: 'Louis Vuitton Alma BB Classic (Monogram Canvas)', price: 5200, dim: '23.5 × 17.5 × 11.5 سم', mat: 'كانفاس مونوغرام + قاعدة جلد', close: 'سحاب مزدوج وقفل' },
-            // 8
             { id: 8, brand: 'lv', title_ar: 'Louis Vuitton East-West Baguette (Monogram Canvas)', price: 5100, dim: '27 × 12 × 7 سم', mat: 'كانفاس مونوغرام + أحزمة جلد', close: 'قلاب بمغناطيس' },
-            // 9
             { id: 9, brand: 'lv', title_ar: 'Louis Vuitton Monogram Shadow East-West (Black)', price: 5600, dim: '30 × 12 × 10 سم', mat: 'جلد شادو أسود محفور', close: 'سحاب مع قفل مذهب' },
-            // 10
             { id: 10, brand: 'lv', title_ar: 'Louis Vuitton Dune Cylinder East-West Bag', price: 5400, dim: '30 × 12 × 10 سم', mat: 'كانفاس ديون عاجي + جلد عسلي', close: 'سحاب مع قفل ذهبي' },
-            // 11
             { id: 11, brand: 'lv', title_ar: 'Louis Vuitton Bucket Bag (Black Monogram Shadow)', price: 5900, dim: '28 × 26 × 12 سم', mat: 'جلد عجل منقوش ومطفي', close: 'مغناطيس علوي' },
-            // 12
             { id: 12, brand: 'lv', title_ar: 'Louis Vuitton Speedy Bandoulière 20 (Black Shadow)', price: 6100, dim: '20 × 13 × 12 سم', mat: 'جلد شادو أسود + سلسلة', close: 'سحاب وقفل' },
-            // 13
             { id: 13, brand: 'lv', title_ar: 'Louis Vuitton Alma BB (Black Monogram Shadow)', price: 5900, dim: '23.5 × 17.5 × 11.5 سم', mat: 'جلد أسود محفور بالكامل', close: 'سحاب مزدوج وقفل' },
-            // 14
             { id: 14, brand: 'lv', title_ar: 'Louis Vuitton Low Key Hobo MM (Deep Burgundy)', price: 6800, dim: '42 × 32 × 12 سم', mat: 'جلد توريون إيطالي طبيعي', close: 'سحاب مؤمن' },
-            // 15
             { id: 15, brand: 'lv', title_ar: 'Louis Vuitton Low Key Hobo MM (Black Glaze)', price: 6900, dim: '42 × 32 × 12 سم', mat: 'جلد عجل ملمع معتق', close: 'سحاب علوي' },
-            // 16
             { id: 16, brand: 'lv', title_ar: 'Louis Vuitton CarryAll Cargo (Blue Denim Jacquard)', price: 6400, dim: '38 × 24 × 16 سم', mat: 'دنيم جاكار مطرز بالكامل', close: 'سحاب مزدوج وقفل' },
-            // 17
             { id: 17, brand: 'lv', title_ar: 'Louis Vuitton CarryAll Cargo (Black Crinkled Leather)', price: 6600, dim: '38 × 24 × 16 سم', mat: 'جلد مجعد ملمع معتق', close: 'سحاب مزدوج وقفل' },
-            // 18
             { id: 18, brand: 'lv', title_ar: 'Louis Vuitton Speedy Soft 30 (Sage Green Empreinte)', price: 6300, dim: '30 × 21 × 17 سم', mat: 'جلد عجل سوفت ميرمية', close: 'سحاب وقفل' },
-            // 19
             { id: 19, brand: 'lv', title_ar: 'Louis Vuitton Vanity Case PM (Sage Green Leather)', price: 5800, dim: '20 × 12 × 10 سم', mat: 'جلد منقوش ومبطن + سلسلة', close: 'سحاب دائري بمغلاق' },
-            // 20
             { id: 20, brand: 'lv', title_ar: 'Louis Vuitton OnTheGo PM (Pastel Iridescent Monogram)', price: 6900, dim: '25 × 19 × 11.5 سم', mat: 'جلد لؤلؤي بزهور متغيرة اللون', close: 'كباس داخلي' },
-            // 21
             { id: 21, brand: 'prada', title_ar: 'Luxury Woven Sky Blue Summer Tote with Bow', price: 3900, dim: '36 × 26 × 12 سم', mat: 'نسيج منسوج فاخر + فيونكة جلد', close: 'مغناطيس علوي' },
-            // 22
             { id: 22, brand: 'chanel', title_ar: 'Chanel Classic Flap (Plum Quilted Velvet)', price: 7200, dim: '25 × 15 × 7 سم', mat: 'مخمل كابتونيه نبيتي فاخر', close: 'قفل CC الدوار' },
-            // 23
             { id: 23, brand: 'chanel', title_ar: 'Chanel 22 Mini Handbag (Baby Pink Calfskin)', price: 7500, dim: '35 × 37 × 7 سم', mat: 'جلد عجل مبطن وردي ناعم', close: 'رباط سحب مغناطيسي' },
-            // 24
             { id: 24, brand: 'chanel', title_ar: 'Chanel Mini Shopping Tote (Black Quilted Caviar)', price: 6800, dim: '20 × 20 × 9 سم', mat: 'جلد كافيار أسود فاخر', close: 'مغناطيس وسلسلة' },
-            // 25
             { id: 25, brand: 'chanel', title_ar: 'Chanel Bowling Bag (Smooth Black Calfskin)', price: 6500, dim: '32 × 18 × 12 سم', mat: 'جلد عجل أملس طبيعي', close: 'سحاب علوي كامل' },
-            // 26
             { id: 26, brand: 'chanel', title_ar: 'Chanel Bowling Bag (Camel Beige Quilted Suede)', price: 6400, dim: '30 × 18 × 12 سم', mat: 'شمواه طبيعي مدبوغ كابتونيه', close: 'سحاب علوي' },
-            // 27
             { id: 27, brand: 'chanel', title_ar: 'Chanel Envelope Flap (Black & Burgundy Accent)', price: 7100, dim: '26 × 18 × 9 سم', mat: 'جلد كافيار حبيبي مدمج', close: 'قفل CC الدوار' },
-            // 28
             { id: 28, brand: 'chanel', title_ar: 'Chanel Pyramid Handbag (Dalmatian Pony Hair)', price: 7800, dim: '22 × 20 × 8 سم', mat: 'شعر مهر طبيعي دالميشن', close: 'مغناطيس خفي' },
-            // 29
             { id: 29, brand: 'chanel', title_ar: 'Chanel Classic Flap (Slate Grey Grained Leather)', price: 6900, dim: '26 × 16 × 8 سم', mat: 'جلد عجل رمادي محبب', close: 'قفل CC الدوار' },
-            // 30
             { id: 30, brand: 'chanel', title_ar: 'Chanel Mini Flap (Black Pebbled Caviar)', price: 6700, dim: '20 × 13 × 6 سم', mat: 'جلد كافيار أصلي متين', close: 'قفل CC الدوار' },
-            // 31
             { id: 31, brand: 'chanel', title_ar: 'Chanel Wave Quilted Flap (Chocolate Brown Leather)', price: 7300, dim: '28 × 18 × 8 سم', mat: 'جلد عجل ملمع بخياطة مموجة', close: 'قفل CC الدوار' },
-            // 32
             { id: 32, brand: 'chanel', title_ar: 'Chanel Mini Kelly (Silver Crystal Strass Pavé)', price: 8200, dim: '18 × 13 × 6 سم', mat: 'ستراس وكريستال فضي براق', close: 'قفل CC الدوار' },
-            // 33
             { id: 33, brand: 'chanel', title_ar: 'Chanel Classic Flap (Black Crystal Diamond Pavé)', price: 7900, dim: '20 × 13 × 6.5 سم', mat: 'كريستال أسود فاخر للسهرات', close: 'قفل CC الدوار' },
-            // 34
             { id: 34, brand: 'chanel', title_ar: 'Chanel Classic Flap (Silver Sparkle Crystals)', price: 8100, dim: '20 × 13 × 6.5 سم', mat: 'كريستال فضي سواروفسكي', close: 'قفل CC الدوار' },
-            // 35
             { id: 35, brand: 'gucci', title_ar: 'Gucci Horsebit 1955 Top Handle (GG Supreme Canvas)', price: 5600, dim: '25 × 18 × 8 سم', mat: 'كانفاس GG + جلد إيطالي', close: 'قلاب بإبزيم Horsebit' },
-            // 36
             { id: 36, brand: 'gucci', title_ar: 'Gucci Horsebit 1955 Top Handle (Black Patent Leather)', price: 5800, dim: '25 × 18 × 8 سم', mat: 'جلد عجل أسود ملمع', close: 'قلاب بإبزيم Horsebit' },
-            // 37
             { id: 37, brand: 'gucci', title_ar: 'Gucci Horsebit 1955 Shoulder Bag (Black Smooth Leather)', price: 5700, dim: '26 × 14 × 6 سم', mat: 'جلد طبيعي ناعم 100%', close: 'قلاب مغناطيسي' }
         ];
 
-        // قائمة الأرقام المطلوب استبعادها وحذفها تماماً
         const excludedIds = new Set([49, 51, 54, 55, 56, 88, 89]);
-
         const brandsPool = ['coach', 'mk', 'gucci', 'prada', 'lv', 'chanel'];
         const fullBagsData = [];
 
-        // إنشاء قائمة المنتجات حتى 89 مع تخطي الأرقام المحذوفة وإسقاط 90 فما فوق
         for (let i = 1; i <= 89; i++) {
             if (excludedIds.has(i)) continue;
 
@@ -426,7 +399,6 @@
             }
         }
 
-        // محرك ذكي لتجربة تحميل الصور
         function handleImgFallback(img, id, attempt = 1) {
             if (attempt === 1) {
                 img.src = `images/${id}.png`;
@@ -456,7 +428,7 @@
 
             listEl.innerHTML = filtered.map(bag => {
                 const directMsg = encodeURIComponent(
-                    `*طلب مباشر لشنطة من NOVA:*\n👜 *الموديل:* ${bag.title_ar} (رقم #${bag.id})\n💵 *السعر:* ${bag.price} ج.م\n🔢 *رقم الموديل:* #${bag.id}`
+                    `*طلب مباشر لشنطة من NOVA:*\n👜 *الموديل:* ${bag.title_ar} (رقم #${bag.id})\n💵 *السعر:* ${bag.price.toLocaleString()} ج.م\n🔢 *رقم الموديل:* #${bag.id}`
                 );
 
                 return `
@@ -624,6 +596,12 @@
             setTimeout(() => { window.open(waUrl, '_blank'); }, 600);
         }
 
+        // منطق الشات بوت الذكي لموقع NOVA
+        function sendQuickBagPrompt(text) {
+            document.getElementById('chat-input').value = text;
+            handleChatSubmit(new Event('submit'));
+        }
+
         function handleChatSubmit(e) {
             e.preventDefault();
             const input = document.getElementById('chat-input');
@@ -631,17 +609,41 @@
             if (!val) return;
 
             const chatMessages = document.getElementById('chat-messages');
-            chatMessages.innerHTML += `<div class="bg-nude-900 text-white p-2 rounded-2xl mr-auto max-w-[80%]">${val}</div>`;
+            chatMessages.innerHTML += `<div class="bg-nude-900 text-white p-2.5 rounded-2xl mr-auto max-w-[85%] font-medium">${val}</div>`;
             input.value = '';
+            chatMessages.scrollTop = chatMessages.scrollHeight;
 
             setTimeout(() => {
+                const lower = val.toLowerCase();
+                let reply = '';
+
+                if (lower.includes('سلام') || lower.includes('مرحبا') || lower.includes('اهلا') || lower.includes('هاي') || lower.includes('صباح') || lower.includes('مساء')) {
+                    reply = 'أهلاً بكِ في **NOVA Studio** للحقائب الفاخرة! 👜✨\nيسعدني جداً مساعدتكِ اليوم. يمكنكِ سؤالي عن:\n• طريقة الطلب وإتمام الشراء 🛍️\n• خامات الجلود الأصلية والمعاينة قبل الدفع 🔍\n• مواعيد الشحن وعربون إنستاباي 🚚\n• تشكيلات الماركات المتاحة (LV, Chanel, Gucci, Prada, Coach, MK).';
+                } else if (lower.includes('طلب') || lower.includes('اشتري') || lower.includes('اوردر') || lower.includes('سلة') || lower.includes('ازاي')) {
+                    reply = '🛍️ **طريقة الطلب بسيطة وسريعة:**\n1. اضغطي على زر "إضافة للسلة" تحت الشنطة المفضلة لكِ.\n2. افتحي السلة واضغطي "متابعة إجراءات الدفع".\n3. اكتبي اسمك وعنوانك وحولي عربون الشحن (100 ج) عبر إنستاباي.\n4. سيتم إرسال الفاتورة بالصور لواتساب المالك لتأكيد الشحن فوراً!';
+                } else if (lower.includes('معاينة') || lower.includes('جلد') || lower.includes('خام') || lower.includes('فحص') || lower.includes('استلام') || lower.includes('اصل')) {
+                    reply = '🔍 **المعاينة وجودة الجلود:**\n• جميع حقائب NOVA مصنوعة من **جلود طبيعية 100%** (جلد عجل محبب، كافيار فاخر، كانفاس معالج) مع أقفال وسحابات مذهبة متينة.\n• **يحق لكِ فحص الحقيبة وتفقد الجلد والبطانة مع المندوب قبل دفع باقي الحساب.**';
+                } else if (lower.includes('شحن') || lower.includes('توصيل') || lower.includes('كام يوم') || lower.includes('وقت') || lower.includes('محافظ')) {
+                    reply = '🚚 **مواعيد الشحن والتوصيل:**\n• القاهرة والجيزة: توصيل سريع خلال 24 - 48 ساعة.\n• الإسكندرية ومحافظات الوجه البحري والقناة: 2 - 3 أيام.\n• الصعيد والبحر الأحمر: 3 أيام عمل.\n• الشحن مجاني لكافة المحافظات!';
+                } else if (lower.includes('عربون') || lower.includes('ديبوزت') || lower.includes('إنستاباي') || lower.includes('instapay') || lower.includes('100')) {
+                    reply = '⚡ **عربون جدية الشحن (100 ج.م):**\nلحجز المندوب وتأكيد جدية الاستلام، يتم تحويل 100 ج.م عبر إنستاباي على حساب:\n📱 `mahmoudabokhashm2006@instapay` أو رقم `01005823798`\nوتُخصم الـ 100 ج بالكامل من قيمة الفاتورة عند الاستلام.';
+                } else if (lower.includes('chanel') || lower.includes('شانيل') || lower.includes('سواريه') || lower.includes('كريستال') || lower.includes('كافيار')) {
+                    reply = '🖤 **حقائب شانيل Chanel:**\nتتميز بتصاميم الكابتونيه الكلاسيكية، وجلد الكافيار المتين، وسلاسل الذهب والكرومات، بالإضافة إلى شنط السهرات المرصعة بكريستال سواروفسكي الفاخر.';
+                } else if (lower.includes('louis') || lower.includes('vuitton') || lower.includes('لويس') || lower.includes('فويتون') || lower.includes('lv') || lower.includes('هوبو')) {
+                    reply = '⚜️ **حقائب لويس فويتون LV:**\nمتوفرة بتشكيلة المونوغرام الأيقوني والجلد الأسود المحفور (Shadow) وموديلات Loop Hobo و CarryAll الأكثر طلباً عالمياً.';
+                } else if (lower.includes('تواصل') || lower.includes('رقم') || lower.includes('واتس') || lower.includes('كلمني')) {
+                    reply = '📲 للتواصل المباشر مع المالك عبر واتساب أو الاتصال:\n📞 **01005823798**\nمتاحون لمساعدتكِ طوال اليوم!';
+                } else {
+                    reply = 'يسعدني مساعدتكِ! 👜 متوفر لدينا تشكيلة حصرية من الحقائب الجلدية الفاخرة مع معاينة مجانية قبل الدفع. للتواصل المباشر عبر واتساب: +201005823798.';
+                }
+
                 chatMessages.innerHTML += `
-                    <div class="bg-white p-2.5 rounded-2xl border border-nude-200 text-nude-900">
-                        يسعدني مساعدتكِ! يمكنكِ طلب أي حقيبة بالضغط على زر "إضافة للسلة" أو التواصل المباشر مع المالك على واتساب: +201005823798.
+                    <div class="bg-white p-3 rounded-2xl border border-nude-200 text-nude-900 leading-relaxed whitespace-pre-line">
+                        ${reply}
                     </div>
                 `;
                 chatMessages.scrollTop = chatMessages.scrollHeight;
-            }, 400);
+            }, 350);
         }
 
         function toggleLanguage() {
