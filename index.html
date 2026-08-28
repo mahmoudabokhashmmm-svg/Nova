@@ -8,9 +8,9 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@200;300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Font Awesome -->
+    <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <script>
@@ -51,7 +51,7 @@
     <div class="bg-nude-100 text-nude-800 border-b border-nude-200 text-[11px] sm:text-xs py-2.5 px-4 text-center font-light leading-relaxed flex items-center justify-between max-w-7xl mx-auto">
         <span class="hidden md:inline">✨ فحص ومعاينة مجانية مع المندوب قبل دفع باقي الحساب</span>
         <span class="mx-auto md:mx-0">
-            <span>تمتعي بخصم 15% على أول طلب بكود:</span> 
+            <span>خصم 15% على أول طلب بكود:</span> 
             <strong class="font-semibold text-nude-900">NOVA15</strong>
         </span>
         <button onclick="toggleLanguage()" class="border border-nude-300 px-3 py-0.5 rounded-full text-[10px] font-medium bg-white/70 hover:bg-white transition flex items-center gap-1">
@@ -93,7 +93,7 @@
             <div class="w-screen max-w-md bg-white p-6 sm:p-8 flex flex-col justify-between shadow-2xl border-l border-nude-200">
                 <div class="space-y-6">
                     <div class="flex items-center justify-between border-b border-nude-200 pb-4">
-                        <span class="text-xs tracking-widest text-nude-500 uppercase">الماركات العالمية (100 موديل)</span>
+                        <span class="text-xs tracking-widest text-nude-500 uppercase">الماركات العالمية الفاخرة</span>
                         <button onclick="toggleSideMenu()" class="text-nude-400 hover:text-nude-900 text-lg">
                             <i class="fa-solid fa-xmark"></i>
                         </button>
@@ -101,8 +101,8 @@
 
                     <nav class="space-y-2.5 text-sm font-medium">
                         <a href="#products" onclick="filterBrand('all'); toggleSideMenu()" class="block text-nude-900 hover:text-nude-500 transition py-1 border-b border-nude-100 flex justify-between items-center">
-                            <span>جميع الموديلات (100 حقيبة)</span>
-                            <span class="text-xs text-nude-400 font-normal">100</span>
+                            <span>جميع الحقائب الحصرية</span>
+                            <span class="text-xs text-nude-400 font-normal">المجموعة الكاملة</span>
                         </a>
                         <a href="#products" onclick="filterBrand('lv'); toggleSideMenu()" class="block text-nude-800 hover:text-nude-500 transition py-1 border-b border-nude-100 flex justify-between items-center">
                             <span>Louis Vuitton ⚜️</span>
@@ -133,9 +133,9 @@
                     <div class="bg-nude-50 p-4 rounded-2xl border border-nude-200 text-xs space-y-2">
                         <div class="font-semibold text-nude-900 flex items-center gap-1.5">
                             <i class="fa-solid fa-truck-fast text-green-700"></i>
-                            <span>شحن مجاني ومعاينة لجميع المحافظات</span>
+                            <span>شحن مجاني ومعاينة قبل الاستلام</span>
                         </div>
-                        <p class="text-nude-600 text-[11px] font-light">يحق لكِ فحص الحقيبة وتفقد الخامات مع المندوب قبل دفع باقي الحساب.</p>
+                        <p class="text-nude-600 text-[11px] font-light">يحق لكِ فحص الحقيبة وتفقد الجلد والخامات مع المندوب قبل دفع باقي الحساب.</p>
                     </div>
                 </div>
 
@@ -148,19 +148,19 @@
 
     <!-- قسم الهيرو -->
     <section class="py-10 sm:py-14 px-4 text-center space-y-4 max-w-3xl mx-auto">
-        <span class="text-nude-600 text-xs uppercase tracking-widest block font-medium">THE 100 SIGNATURE LUXURY COLLECTION</span>
+        <span class="text-nude-600 text-xs uppercase tracking-widest block font-medium">NOVA SIGNATURE LUXURY COLLECTION</span>
         <h1 class="text-3xl sm:text-5xl font-light text-nude-900 tracking-tight leading-tight">
-            تشكيلة الـ 100 حقيبة <br> <span class="font-semibold text-nude-600">بأعلى معايير الفخامة</span>
+            التشكيلة الحصرية الفاخرة <br> <span class="font-semibold text-nude-600">بأعلى معايير الجلود الأصلية</span>
         </h1>
         <p class="text-xs sm:text-sm text-nude-600 font-light max-w-lg mx-auto">
-            جميع الموديلات مصنفة بالخامات الطبيعية، الأبعاد الدقيقة، مع خيار الطلب المباشر عبر واتساب أو الشات الذكي.
+            جميع الحقائب مصنوعة من جلود طبيعية مدبوغة بأعلى دقة، مع أبعاد قياسية وإمكانية الطلب المباشر عبر واتساب أو الشات الذكي.
         </p>
     </section>
 
     <!-- شريط فلاتر الماركات -->
     <section id="products" class="py-4 max-w-xl mx-auto px-4 sm:px-6">
         <div class="flex flex-wrap items-center justify-center gap-1.5 mb-8 bg-nude-100 p-1.5 rounded-2xl border border-nude-200 text-xs font-medium">
-            <button onclick="filterBrand('all')" class="filter-btn active px-3.5 py-1.5 rounded-xl bg-nude-900 text-white transition-all font-bold" data-brand="all">الكل (100)</button>
+            <button onclick="filterBrand('all')" class="filter-btn active px-3.5 py-1.5 rounded-xl bg-nude-900 text-white transition-all font-bold" data-brand="all">الكل</button>
             <button onclick="filterBrand('lv')" class="filter-btn px-3.5 py-1.5 rounded-xl text-nude-800 hover:bg-white transition-all" data-brand="lv">Louis Vuitton</button>
             <button onclick="filterBrand('chanel')" class="filter-btn px-3.5 py-1.5 rounded-xl text-nude-800 hover:bg-white transition-all" data-brand="chanel">Chanel</button>
             <button onclick="filterBrand('gucci')" class="filter-btn px-3.5 py-1.5 rounded-xl text-nude-800 hover:bg-white transition-all" data-brand="gucci">Gucci</button>
@@ -169,7 +169,7 @@
             <button onclick="filterBrand('mk')" class="filter-btn px-3.5 py-1.5 rounded-xl text-nude-800 hover:bg-white transition-all" data-brand="mk">MK</button>
         </div>
 
-        <!-- قائمة الشنط الـ 100 -->
+        <!-- قائمة الشنط المعروضة -->
         <div class="space-y-8" id="products-list"></div>
     </section>
 
@@ -286,12 +286,12 @@
         </button>
         <div id="chatbot-window" class="hidden absolute bottom-16 right-0 w-[320px] sm:w-[350px] bg-white rounded-3xl shadow-2xl border border-nude-200 overflow-hidden flex flex-col h-[440px]">
             <div class="bg-nude-900 text-white p-3.5 flex items-center justify-between">
-                <span class="text-xs font-medium">مستشار NOVA الذكي (100 موديل)</span>
+                <span class="text-xs font-medium">مستشار NOVA الذكي</span>
                 <button onclick="toggleChatbot()"><i class="fa-solid fa-xmark text-sm"></i></button>
             </div>
             <div id="chat-messages" class="flex-1 p-3 overflow-y-auto space-y-2 text-xs custom-scroll bg-nude-50/50">
                 <div class="bg-white p-2.5 rounded-2xl border border-nude-200 text-nude-900">
-                    أهلاً بكِ في NOVA! متوفر لدينا 100 موديل فاخر. يمكنكِ طلب أي حقيبة مباشرة من هنا 👜✨
+                    أهلاً بكِ في NOVA! متوفر لدينا تشكيلة حصرية من الحقائب الجلدية الفاخرة. يمكنكِ طلب أي شنطة مباشرة عبر المحادثة 👜✨
                 </div>
             </div>
             <form onsubmit="handleChatSubmit(event)" class="p-2.5 border-t border-nude-200 bg-white flex gap-1.5">
@@ -301,7 +301,7 @@
         </div>
     </div>
 
-    <!-- مصفوفة الشنط بالترتيب الدقيق للصور والأسماء السهلة -->
+    <!-- مصفوفة الشنط بالأسعار المحدثة وحذف العناصر المحددة -->
     <script>
         const OWNER_PHONE = "201005823798";
         const INSTAPAY_HANDLE = "mahmoudabokhashm2006@instapay";
@@ -310,69 +310,96 @@
         let cart = [];
         let currentBrandFilter = 'all';
 
-        // الشنط الـ 26 الأولى المرتبة تماماً حسب الصور المرفقة
-        const baseBags = [
+        // الشنط الأساسية مع تعديل الأسعار لتبدأ من 3,500 إلى 8,200 ج.م
+        const rawBags = [
             // 1
-            { id: 1, brand: 'lv', title_ar: 'Louis Vuitton Loop Hobo (Monogram Canvas)', price: 1850, dim: '38 × 26 × 10 سم', mat: 'كانفاس مونوغرام + جلد طبيعي', close: 'سحاب علوي مؤمن' },
+            { id: 1, brand: 'lv', title_ar: 'Louis Vuitton Loop Hobo (Monogram Canvas)', price: 5400, dim: '38 × 26 × 10 سم', mat: 'كانفاس مونوغرام + جلد طبيعي', close: 'سحاب علوي مؤمن' },
             // 2
-            { id: 2, brand: 'lv', title_ar: 'Louis Vuitton Loop Hobo (Black Grained Leather)', price: 1950, dim: '38 × 26 × 10 سم', mat: 'جلد عجل محبب 100%', close: 'سحاب علوي' },
+            { id: 2, brand: 'lv', title_ar: 'Louis Vuitton Loop Hobo (Black Grained Leather)', price: 5900, dim: '38 × 26 × 10 سم', mat: 'جلد عجل محبب 100%', close: 'سحاب علوي' },
             // 3
-            { id: 3, brand: 'lv', title_ar: 'Louis Vuitton Loop Hobo (Burgundy Glazed Leather)', price: 1980, dim: '38 × 26 × 10 سم', mat: 'جلد ملمع فاخر معتق', close: 'سحاب علوي مؤمن' },
+            { id: 3, brand: 'lv', title_ar: 'Louis Vuitton Loop Hobo (Burgundy Glazed Leather)', price: 6200, dim: '38 × 26 × 10 سم', mat: 'جلد ملمع فاخر معتق', close: 'سحاب علوي مؤمن' },
             // 4
-            { id: 4, brand: 'lv', title_ar: 'Louis Vuitton Loop Hobo (Denim Jacquard Monogram)', price: 1920, dim: '38 × 26 × 10 سم', mat: 'دنيم جاكار + جلد طبيعي', close: 'سحاب علوي' },
+            { id: 4, brand: 'lv', title_ar: 'Louis Vuitton Loop Hobo (Denim Jacquard Monogram)', price: 5600, dim: '38 × 26 × 10 سم', mat: 'دنيم جاكار + جلد طبيعي', close: 'سحاب علوي' },
             // 5
-            { id: 5, brand: 'lv', title_ar: 'Louis Vuitton Atlantis Bucket Bag (Monogram Canvas)', price: 1880, dim: '34 × 34 × 13 سم', mat: 'كانفاس مونوغرام + فاتشيتا', close: 'مغناطيس وقفل مذهب' },
+            { id: 5, brand: 'lv', title_ar: 'Louis Vuitton Atlantis Bucket Bag (Monogram Canvas)', price: 5500, dim: '34 × 34 × 13 سم', mat: 'كانفاس مونوغرام + فاتشيتا', close: 'مغناطيس وقفل مذهب' },
             // 6
-            { id: 6, brand: 'lv', title_ar: 'Louis Vuitton Papillon Barrel / Cylinder Bag', price: 1650, dim: '26 × 13 × 13 سم', mat: 'كانفاس مونوغرام أسطواني', close: 'سحاب كامل' },
+            { id: 6, brand: 'lv', title_ar: 'Louis Vuitton Papillon Barrel / Cylinder Bag', price: 4800, dim: '26 × 13 × 13 سم', mat: 'كانفاس مونوغرام أسطواني', close: 'سحاب كامل' },
             // 7
-            { id: 7, brand: 'lv', title_ar: 'Louis Vuitton Alma BB Classic (Monogram Canvas)', price: 1790, dim: '23.5 × 17.5 × 11.5 سم', mat: 'كانفاس مونوغرام + قاعدة جلد', close: 'سحاب مزدوج وقفل' },
+            { id: 7, brand: 'lv', title_ar: 'Louis Vuitton Alma BB Classic (Monogram Canvas)', price: 5200, dim: '23.5 × 17.5 × 11.5 سم', mat: 'كانفاس مونوغرام + قاعدة جلد', close: 'سحاب مزدوج وقفل' },
             // 8
-            { id: 8, brand: 'lv', title_ar: 'Louis Vuitton East-West Baguette (Monogram Canvas)', price: 1720, dim: '27 × 12 × 7 سم', mat: 'كانفاس مونوغرام + أحزمة جلد', close: 'قلاب بمغناطيس' },
+            { id: 8, brand: 'lv', title_ar: 'Louis Vuitton East-West Baguette (Monogram Canvas)', price: 5100, dim: '27 × 12 × 7 سم', mat: 'كانفاس مونوغرام + أحزمة جلد', close: 'قلاب بمغناطيس' },
             // 9
-            { id: 9, brand: 'lv', title_ar: 'Louis Vuitton Monogram Shadow East-West (Black)', price: 1820, dim: '30 × 12 × 10 سم', mat: 'جلد شادو أسود محفور', close: 'سحاب مع قفل مذهب' },
+            { id: 9, brand: 'lv', title_ar: 'Louis Vuitton Monogram Shadow East-West (Black)', price: 5600, dim: '30 × 12 × 10 سم', mat: 'جلد شادو أسود محفور', close: 'سحاب مع قفل مذهب' },
             // 10
-            { id: 10, brand: 'lv', title_ar: 'Louis Vuitton Dune Cylinder East-West Bag', price: 1780, dim: '30 × 12 × 10 سم', mat: 'كانفاس ديون عاجي + جلد عسلي', close: 'سحاب مع قفل ذهبي' },
+            { id: 10, brand: 'lv', title_ar: 'Louis Vuitton Dune Cylinder East-West Bag', price: 5400, dim: '30 × 12 × 10 سم', mat: 'كانفاس ديون عاجي + جلد عسلي', close: 'سحاب مع قفل ذهبي' },
             // 11
-            { id: 11, brand: 'lv', title_ar: 'Louis Vuitton Bucket Bag (Black Monogram Shadow)', price: 1890, dim: '28 × 26 × 12 سم', mat: 'جلد عجل منقوش ومطفي', close: 'مغناطيس علوي' },
+            { id: 11, brand: 'lv', title_ar: 'Louis Vuitton Bucket Bag (Black Monogram Shadow)', price: 5900, dim: '28 × 26 × 12 سم', mat: 'جلد عجل منقوش ومطفي', close: 'مغناطيس علوي' },
             // 12
-            { id: 12, brand: 'lv', title_ar: 'Louis Vuitton Speedy Bandoulière 20 (Black Shadow)', price: 1950, dim: '20 × 13 × 12 سم', mat: 'جلد شادو أسود + سلسلة', close: 'سحاب وقفل' },
+            { id: 12, brand: 'lv', title_ar: 'Louis Vuitton Speedy Bandoulière 20 (Black Shadow)', price: 6100, dim: '20 × 13 × 12 سم', mat: 'جلد شادو أسود + سلسلة', close: 'سحاب وقفل' },
             // 13
-            { id: 13, brand: 'lv', title_ar: 'Louis Vuitton Alma BB (Black Monogram Shadow)', price: 1920, dim: '23.5 × 17.5 × 11.5 سم', mat: 'جلد أسود محفور بالكامل', close: 'سحاب مزدوج وقفل' },
+            { id: 13, brand: 'lv', title_ar: 'Louis Vuitton Alma BB (Black Monogram Shadow)', price: 5900, dim: '23.5 × 17.5 × 11.5 سم', mat: 'جلد أسود محفور بالكامل', close: 'سحاب مزدوج وقفل' },
             // 14
-            { id: 14, brand: 'lv', title_ar: 'Louis Vuitton Low Key Hobo MM (Deep Burgundy)', price: 2150, dim: '42 × 32 × 12 سم', mat: 'جلد توريون إيطالي طبيعي', close: 'سحاب مؤمن' },
+            { id: 14, brand: 'lv', title_ar: 'Louis Vuitton Low Key Hobo MM (Deep Burgundy)', price: 6800, dim: '42 × 32 × 12 سم', mat: 'جلد توريون إيطالي طبيعي', close: 'سحاب مؤمن' },
             // 15
-            { id: 15, brand: 'lv', title_ar: 'Louis Vuitton Low Key Hobo MM (Black Glaze)', price: 2180, dim: '42 × 32 × 12 سم', mat: 'جلد عجل ملمع معتق', close: 'سحاب علوي' },
+            { id: 15, brand: 'lv', title_ar: 'Louis Vuitton Low Key Hobo MM (Black Glaze)', price: 6900, dim: '42 × 32 × 12 سم', mat: 'جلد عجل ملمع معتق', close: 'سحاب علوي' },
             // 16
-            { id: 16, brand: 'lv', title_ar: 'Louis Vuitton CarryAll Cargo (Blue Denim Jacquard)', price: 2050, dim: '38 × 24 × 16 سم', mat: 'دنيم جاكار مطرز بالكامل', close: 'سحاب مزدوج وقفل' },
+            { id: 16, brand: 'lv', title_ar: 'Louis Vuitton CarryAll Cargo (Blue Denim Jacquard)', price: 6400, dim: '38 × 24 × 16 سم', mat: 'دنيم جاكار مطرز بالكامل', close: 'سحاب مزدوج وقفل' },
             // 17
-            { id: 17, brand: 'lv', title_ar: 'Louis Vuitton CarryAll Cargo (Black Crinkled Leather)', price: 2100, dim: '38 × 24 × 16 سم', mat: 'جلد مجعد ملمع معتق', close: 'سحاب مزدوج وقفل' },
+            { id: 17, brand: 'lv', title_ar: 'Louis Vuitton CarryAll Cargo (Black Crinkled Leather)', price: 6600, dim: '38 × 24 × 16 سم', mat: 'جلد مجعد ملمع معتق', close: 'سحاب مزدوج وقفل' },
             // 18
-            { id: 18, brand: 'lv', title_ar: 'Louis Vuitton Speedy Soft 30 (Sage Green Empreinte)', price: 1980, dim: '30 × 21 × 17 سم', mat: 'جلد عجل سوفت ميرمية', close: 'سحاب وقفل' },
+            { id: 18, brand: 'lv', title_ar: 'Louis Vuitton Speedy Soft 30 (Sage Green Empreinte)', price: 6300, dim: '30 × 21 × 17 سم', mat: 'جلد عجل سوفت ميرمية', close: 'سحاب وقفل' },
             // 19
-            { id: 19, brand: 'lv', title_ar: 'Louis Vuitton Vanity Case PM (Sage Green Leather)', price: 1850, dim: '20 × 12 × 10 سم', mat: 'جلد منقوش ومبطن + سلسلة', close: 'سحاب دائري بمغلاق' },
+            { id: 19, brand: 'lv', title_ar: 'Louis Vuitton Vanity Case PM (Sage Green Leather)', price: 5800, dim: '20 × 12 × 10 سم', mat: 'جلد منقوش ومبطن + سلسلة', close: 'سحاب دائري بمغلاق' },
             // 20
-            { id: 20, brand: 'lv', title_ar: 'Louis Vuitton OnTheGo PM (Pastel Iridescent Monogram)', price: 2200, dim: '25 × 19 × 11.5 سم', mat: 'جلد لؤلؤي بزهور متغيرة اللون', close: 'كباس داخلي' },
+            { id: 20, brand: 'lv', title_ar: 'Louis Vuitton OnTheGo PM (Pastel Iridescent Monogram)', price: 6900, dim: '25 × 19 × 11.5 سم', mat: 'جلد لؤلؤي بزهور متغيرة اللون', close: 'كباس داخلي' },
             // 21
-            { id: 21, brand: 'prada', title_ar: 'Luxury Woven Sky Blue Summer Tote with Bow', price: 1650, dim: '36 × 26 × 12 سم', mat: 'نسيج منسوج فاخر + فيونكة جلد', close: 'مغناطيس علوي' },
+            { id: 21, brand: 'prada', title_ar: 'Luxury Woven Sky Blue Summer Tote with Bow', price: 3900, dim: '36 × 26 × 12 سم', mat: 'نسيج منسوج فاخر + فيونكة جلد', close: 'مغناطيس علوي' },
             // 22
-            { id: 22, brand: 'chanel', title_ar: 'Chanel Classic Flap (Plum Quilted Velvet)', price: 2150, dim: '25 × 15 × 7 سم', mat: 'مخمل كابتونيه نبيتي فاخر', close: 'قفل CC الدوار' },
+            { id: 22, brand: 'chanel', title_ar: 'Chanel Classic Flap (Plum Quilted Velvet)', price: 7200, dim: '25 × 15 × 7 سم', mat: 'مخمل كابتونيه نبيتي فاخر', close: 'قفل CC الدوار' },
             // 23
-            { id: 23, brand: 'chanel', title_ar: 'Chanel 22 Mini Handbag (Baby Pink Calfskin)', price: 2250, dim: '35 × 37 × 7 سم', mat: 'جلد عجل مبطن وردي ناعم', close: 'رباط سحب مغناطيسي' },
+            { id: 23, brand: 'chanel', title_ar: 'Chanel 22 Mini Handbag (Baby Pink Calfskin)', price: 7500, dim: '35 × 37 × 7 سم', mat: 'جلد عجل مبطن وردي ناعم', close: 'رباط سحب مغناطيسي' },
             // 24
-            { id: 24, brand: 'chanel', title_ar: 'Chanel Mini Shopping Tote (Black Quilted Caviar)', price: 2100, dim: '20 × 20 × 9 سم', mat: 'جلد كافيار أسود فاخر', close: 'مغناطيس وسلسلة' },
+            { id: 24, brand: 'chanel', title_ar: 'Chanel Mini Shopping Tote (Black Quilted Caviar)', price: 6800, dim: '20 × 20 × 9 سم', mat: 'جلد كافيار أسود فاخر', close: 'مغناطيس وسلسلة' },
             // 25
-            { id: 25, brand: 'chanel', title_ar: 'Chanel Bowling Bag (Smooth Black Calfskin)', price: 2050, dim: '32 × 18 × 12 سم', mat: 'جلد عجل أملس طبيعي', close: 'سحاب علوي كامل' },
+            { id: 25, brand: 'chanel', title_ar: 'Chanel Bowling Bag (Smooth Black Calfskin)', price: 6500, dim: '32 × 18 × 12 سم', mat: 'جلد عجل أملس طبيعي', close: 'سحاب علوي كامل' },
             // 26
-            { id: 26, brand: 'chanel', title_ar: 'Chanel Bowling Bag (Camel Beige Quilted Suede)', price: 1980, dim: '30 × 18 × 12 سم', mat: 'شمواه طبيعي مدبوغ كابتونيه', close: 'سحاب علوي' }
+            { id: 26, brand: 'chanel', title_ar: 'Chanel Bowling Bag (Camel Beige Quilted Suede)', price: 6400, dim: '30 × 18 × 12 سم', mat: 'شمواه طبيعي مدبوغ كابتونيه', close: 'سحاب علوي' },
+            // 27
+            { id: 27, brand: 'chanel', title_ar: 'Chanel Envelope Flap (Black & Burgundy Accent)', price: 7100, dim: '26 × 18 × 9 سم', mat: 'جلد كافيار حبيبي مدمج', close: 'قفل CC الدوار' },
+            // 28
+            { id: 28, brand: 'chanel', title_ar: 'Chanel Pyramid Handbag (Dalmatian Pony Hair)', price: 7800, dim: '22 × 20 × 8 سم', mat: 'شعر مهر طبيعي دالميشن', close: 'مغناطيس خفي' },
+            // 29
+            { id: 29, brand: 'chanel', title_ar: 'Chanel Classic Flap (Slate Grey Grained Leather)', price: 6900, dim: '26 × 16 × 8 سم', mat: 'جلد عجل رمادي محبب', close: 'قفل CC الدوار' },
+            // 30
+            { id: 30, brand: 'chanel', title_ar: 'Chanel Mini Flap (Black Pebbled Caviar)', price: 6700, dim: '20 × 13 × 6 سم', mat: 'جلد كافيار أصلي متين', close: 'قفل CC الدوار' },
+            // 31
+            { id: 31, brand: 'chanel', title_ar: 'Chanel Wave Quilted Flap (Chocolate Brown Leather)', price: 7300, dim: '28 × 18 × 8 سم', mat: 'جلد عجل ملمع بخياطة مموجة', close: 'قفل CC الدوار' },
+            // 32
+            { id: 32, brand: 'chanel', title_ar: 'Chanel Mini Kelly (Silver Crystal Strass Pavé)', price: 8200, dim: '18 × 13 × 6 سم', mat: 'ستراس وكريستال فضي براق', close: 'قفل CC الدوار' },
+            // 33
+            { id: 33, brand: 'chanel', title_ar: 'Chanel Classic Flap (Black Crystal Diamond Pavé)', price: 7900, dim: '20 × 13 × 6.5 سم', mat: 'كريستال أسود فاخر للسهرات', close: 'قفل CC الدوار' },
+            // 34
+            { id: 34, brand: 'chanel', title_ar: 'Chanel Classic Flap (Silver Sparkle Crystals)', price: 8100, dim: '20 × 13 × 6.5 سم', mat: 'كريستال فضي سواروفسكي', close: 'قفل CC الدوار' },
+            // 35
+            { id: 35, brand: 'gucci', title_ar: 'Gucci Horsebit 1955 Top Handle (GG Supreme Canvas)', price: 5600, dim: '25 × 18 × 8 سم', mat: 'كانفاس GG + جلد إيطالي', close: 'قلاب بإبزيم Horsebit' },
+            // 36
+            { id: 36, brand: 'gucci', title_ar: 'Gucci Horsebit 1955 Top Handle (Black Patent Leather)', price: 5800, dim: '25 × 18 × 8 سم', mat: 'جلد عجل أسود ملمع', close: 'قلاب بإبزيم Horsebit' },
+            // 37
+            { id: 37, brand: 'gucci', title_ar: 'Gucci Horsebit 1955 Shoulder Bag (Black Smooth Leather)', price: 5700, dim: '26 × 14 × 6 سم', mat: 'جلد طبيعي ناعم 100%', close: 'قلاب مغناطيسي' }
         ];
 
-        // مصفوفة الـ 100 حقيبة
+        // قائمة الأرقام المطلوب استبعادها وحذفها تماماً
+        const excludedIds = new Set([49, 51, 54, 55, 56, 88, 89]);
+
         const brandsPool = ['coach', 'mk', 'gucci', 'prada', 'lv', 'chanel'];
         const fullBagsData = [];
 
-        for (let i = 1; i <= 100; i++) {
-            if (i <= baseBags.length) {
-                const b = baseBags[i - 1];
+        // إنشاء قائمة المنتجات حتى 89 مع تخطي الأرقام المحذوفة وإسقاط 90 فما فوق
+        for (let i = 1; i <= 89; i++) {
+            if (excludedIds.has(i)) continue;
+
+            if (i <= rawBags.length) {
+                const b = rawBags[i - 1];
                 fullBagsData.push({
                     ...b,
                     id: i,
@@ -381,7 +408,10 @@
                 });
             } else {
                 const bBrand = brandsPool[(i - 1) % brandsPool.length];
-                const bPrice = 1450 + ((i * 17) % 850);
+                let bPrice = 3600 + ((i * 35) % 1800);
+                if (bBrand === 'chanel' || bBrand === 'lv') bPrice += 1600;
+                else if (bBrand === 'gucci' || bBrand === 'prada') bPrice += 1000;
+
                 fullBagsData.push({
                     id: i,
                     brand: bBrand,
@@ -396,7 +426,7 @@
             }
         }
 
-        // محرك ذكي يجرب مسارات المجلد المسمى بالترتيب
+        // محرك ذكي لتجربة تحميل الصور
         function handleImgFallback(img, id, attempt = 1) {
             if (attempt === 1) {
                 img.src = `images/${id}.png`;
@@ -439,7 +469,6 @@
                                 ${bag.tag_ar}
                             </span>
                             
-                            <!-- محاولة تحميل الصورة من مسار images/ برقم الشنطة -->
                             <img src="images/${bag.id}.webp" 
                                  alt="${bag.title_ar}" 
                                  class="w-full h-full object-contain hover:scale-105 transition-transform duration-500" 
@@ -562,10 +591,10 @@
             const invoiceNo = 'NOV-' + Math.floor(1000 + Math.random() * 9000);
 
             let itemsText = '';
-            cart.forEach((item, i) => { itemsText += `\n  ${i+1}. *${item.title}* (${item.price} ج.م)`; });
+            cart.forEach((item, i) => { itemsText += `\n  ${i+1}. *${item.title}* (${item.price.toLocaleString()} ج.م)`; });
 
             const msg = 
-                `🔔 *طلب جديد عبر متجر NOVA (100 شنطة)*\n` +
+                `🔔 *طلب جديد عبر متجر NOVA*\n` +
                 `---------------------------------\n` +
                 `🧾 *رقم الفاتورة:* #${invoiceNo}\n` +
                 `👤 *اسم العميل:* ${name}\n` +
@@ -584,7 +613,7 @@
             const previewEl = document.getElementById('success-items-preview');
             previewEl.innerHTML = `
                 <p class="font-bold text-nude-900 border-b border-nude-200 pb-1">المنتجات المطلوبة:</p>
-                ${cart.map(item => `<div>• ${item.title}</div>`).join('')}
+                ${cart.map(item => `<div>• ${item.title} (${item.price.toLocaleString()} ج.م)</div>`).join('')}
                 <p class="pt-1 font-bold text-nude-900 border-t border-nude-200">الإجمالي: ${total.toLocaleString()} ج.م</p>
             `;
 
@@ -608,7 +637,7 @@
             setTimeout(() => {
                 chatMessages.innerHTML += `
                     <div class="bg-white p-2.5 rounded-2xl border border-nude-200 text-nude-900">
-                        يسعدني مساعدتكِ! يمكنكِ طلب أي من الـ 100 موديل بالضغط على زر "إضافة للسلة" أو التواصل المباشر مع المالك على واتساب: +201005823798.
+                        يسعدني مساعدتكِ! يمكنكِ طلب أي حقيبة بالضغط على زر "إضافة للسلة" أو التواصل المباشر مع المالك على واتساب: +201005823798.
                     </div>
                 `;
                 chatMessages.scrollTop = chatMessages.scrollHeight;
@@ -629,4 +658,4 @@
         });
     </script>
 </body>
-          </html>
+</html>
